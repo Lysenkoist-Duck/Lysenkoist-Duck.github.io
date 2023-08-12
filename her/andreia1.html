@@ -1,26 +1,165 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LP1 Samir</title>
-    <style>
-        h1 {
-          color: #634FC0;
-          text-indent: 69px;
-        }
-    </style>
+	<meta charset="UTF-8"> <!--Set of characters.-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LP1 Samir</title>  <!--What title will appear on the browser.-->
+	<style>
+		body {
+			background-color: #333333;
+			font-family: Geneva, Tahoma, sans-serif; /*Main font, fallback fonts.*/
+			margin: 0;
+			padding: 0;
+			display: flex; /*This makes everything sorta flexible.*/
+			flex-direction: column;
+			min-height: 100vh;
+		}
+		header {
+			background-color: #212121;
+			padding: 10px;
+			text-align: center;
+		}
+		h1 {
+			font-family: 'Times New Roman', serif;
+			text-indent: 69px;
+		}
+		h2 {
+			font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			text-indent: 35px;
+			color: #FF5733;
+		}
+		a {
+			color: #00B4B4;
+		}
+		p { 
+			font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			font-size: larger;
+			color: #FF5733;
+			text-indent: 35px;
+		}
+		.intro {
+			font-size:xx-large;
+			flex: 1;
+		}
+		.stuff {
+			color: #7B68EE;
+			flex: 1;
+		}
+		table {
+			width: 90%;
+			align-self: center;
+			border-collapse: collapse;
+			border: 2px solid #7B68EE;
+		}
+		th, td {
+			color: #FF5733;
+			padding: 10px;
+			text-align: center;
+			border: 1px solid #7B68EE;
+		}
+		th {
+			background-color: #7B68EE;
+			color: #D3D3D3; /*Tabler Header Text Colour*/
+		}
+		tr:nth-child(even) {
+			background-color: #5c5c5c;
+		}
+		footer {
+			background-color: #212121;
+			text-align: center;
+			padding: 10px;
+		}
+	</style>
 </head>
-<body bgcolor="#def28d">
-    <h1>
-        LP1 Samir
-    </h1>
-    <h2>
-        I don't have anything to say.
-    </h2>
-    <p>
-        Here's the <a href="https://lysenkoist-duck.github.io/her/andreia2.html">link</a>.
-    </p>
+<body>
+	<div class="stuff">
+		<header>
+			<h1><a href="https://lysenkoist-duck.github.io/index.html" style="text-decoration: none; color: inherit;">LPI</a></h1>
+		</header>
+		<h2>
+			Below I'll leave some examples of Pokémon objects.
+		</h2>
+	</div>
+	<table>
+		<tr>
+			<th>Type</th>
+			<th>Name</th>
+			<th>Height</th>
+			<th>Weight</th>
+			<th>Moves</th>
+			<th>Nickname</th>
+		</tr>
+		<tr>
+			<td>Ice</td>
+			<td>Glaceon</td>
+			<td>86cm</td>
+			<td>26kg</td>
+			<td>Ice Beam<br>Shadow Ball<br>Mirror Coat<br>Yawn</td>
+			<td>Blizzard</td>
+		</tr>
+		<tr>
+			<td>Electric</td>
+			<td>Luxio</td>
+			<td>96cm</td>
+			<td>31kg</td>
+			<td>Thunder Fang<br>Charge Beam<br>Eerie Impulse<br>Bite</td>
+			<td>Thunder</td>
+		</tr>
+		<tr>
+			<td>Steel/Flying</td>
+			<td>Skarmory</td>
+			<td>169cm</td>
+			<td>50kg</td>
+			<td>Air Slash<br>Detect<br>Dark Pulse<br>Flash Cannon</td>
+			<td>Sky</td>
+		</tr>
+		<tr>
+			<td>Fire/Flying</td>
+			<td>Charizard</td>
+			<td>170cm</td>
+			<td>112kg</td>
+			<td>Dragon Claw<br>Fire Pledge<br>Overheat<br>Fly</td>
+			<td>Charigarto</td>
+		</tr>
+	</table>
+	<div style="display: block;">
+		<p style="text-indent: 45px;">
+			If you were to properly simulate these Pokémon in a software, you'd first need to define a Pokémon Class.
+		</p>
+		<p style="text-indent: 45px;">
+			After that you'd create a type and name attributes to be chosen from a predefined set,
+		</p>
+		<p style="text-indent: 45px;">
+			and then height and weight attributes that could vary randomly inside a given range for each Pokémon.
+		</p>
+		<p style="text-indent: 45px;">
+			The nickmame attribute is often treated as optional, using the name of the Pokémon as a fallback nickname.
+		</p>
+		<p style="text-indent: 45px;">
+			Once all that is taken care of all that would be left to do is define the methods to simulate the moves,
+		</p>
+		<p style="text-indent: 45px;">
+			which could be simplified into being a single method that receives as arguments all the effects the move causes,
+		</p>
+		<p style="text-indent: 45px;">
+			this way you'd save a lot of time, as you'd only need to specify the details of each attack,
+		</p>
+		<p style="text-indent: 45px;">
+			instead of repeating the entirety of the logic for dealing dmg or getting a buff for example.
+		</p>
+	</div>
+
+	<div>
+		<p>
+			Here's the <a href="https://lysenkoist-duck.github.io/her/andreia2.html">link</a> for the Honey Badger page.
+		</p>
+		<p>
+			And here's the <a href="https://oberstar.eu.org/share/Documents/The-Manga-guide-to-databases.pdf">link</a> for a manga about Databases.
+		</p>
+	</div>
+	<footer>
+		<p class="stuff">Made with a lot of love and care by Samir Saleh Godinho.</p>
+	</footer>
 </body>
 </html>

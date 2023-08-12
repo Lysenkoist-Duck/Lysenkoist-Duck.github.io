@@ -1,28 +1,79 @@
 <!DOCTYPE html> <!--The type of the document, duh.-->
 <html lang="en-GB"> <!--Language-Region-->
 <head>
-    <meta charset="UTF-8"> <!--Set of characters.-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="UTF-8"> <!--Set of characters.-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LP1 Samir</title>
+	<title>LP1 Samir</title>  <!--What title will appear on the browser.-->
 	<style>
-        h1 {
-          color: #590A84;
-          text-indent: 69px;
-        }
-    </style>
+		body {
+			background-color: #333333;
+			font-family: Geneva, Tahoma, sans-serif; /*Main font, fallback fonts.*/
+			margin: 0;
+			padding: 0;
+			display: flex; /*This makes everything sorta flexible.*/
+			flex-direction: column;
+			min-height: 100vh;
+		}
+		header {
+			background-color: #212121;
+			padding: 10px;
+			text-align: center;
+		}
+		h1 {
+			font-family: 'Times New Roman', serif; /*Font, fallback font.*/
+			text-indent: 69px;
+		}
+		a {
+			color: #00B4B4;
+		}
+		p { 
+			font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			font-size: larger;
+			color: #FF5733;
+			text-indent: 35px;
+		}
+		.intro {
+			font-size:xx-large;
+			flex: 1;
+		}
+		.stuff {
+			color: #7B68EE;
+			flex: 1;
+		}
+		footer {
+			background-color: #212121;
+			text-align: center;
+			padding: 10px;
+		}
+	</style>
 </head>
 <body>
-	<h1>LP1 Samir</h1>  
-	<p>This is my website for the LP1 classes with the Amazing Andréia!</p>
-	<p>
-		Here's the <a href="https://lysenkoist-duck.github.io/her/andreia2.html">link</a> for the 1st page.
+	<header>
+		<h1 class="stuff"><a href="https://lysenkoist-duck.github.io/index.html" style="text-decoration: none; color: inherit;">LPI</a></h1>
+	</header>
+	<p class="intro">
+		This is my website for the LP1 subject, teached by the amazing <strong>Andréia Sias Rodrigues</strong>!
 	</p>
+
 	<p>
-		Here's the <a href="https://lysenkoist-duck.github.io/her/andreia2.html">link</a> for the 2nd page.
+		Regardless of which link you click, you can return to the main page by clicking on "LPI" on the top of the page.
 	</p>
+
+	<p>
+		Here's the <a href="https://lysenkoist-duck.github.io/her/andreia1.html">link</a> for a page featuring some examples Pokémon objects.
+	</p>
+
+	<p>
+		Here's the <a href="https://lysenkoist-duck.github.io/her/andreia2.html">link</a> for the Honey Badger page.
+	</p>
+
 	<p>
 		And here's the <a href="https://oberstar.eu.org/share/Documents/The-Manga-guide-to-databases.pdf">link</a> for a manga about Databases.
 	</p>
+
+	<footer>
+		<p class="stuff">Made with a lot of love and care by Samir Saleh Godinho.</p>
+	</footer>
 </body>
 </html>

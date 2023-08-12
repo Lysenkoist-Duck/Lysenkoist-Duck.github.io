@@ -1,26 +1,143 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LP1 Samir</title>
-    <style>
-        h1 {
-          color: #55AEF7;
-          text-indent: 69px;
-        }
-    </style>
+	<meta charset="UTF-8"> <!--Set of characters.-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LP1 Samir</title>  <!--What title will appear on the browser.-->
+	<style>
+		body {
+			background-color: #333333;
+			font-family: Geneva, Tahoma, sans-serif; /*Main font, fallback fonts.*/
+			margin: 0;
+			padding: 0;
+			display: flex; /*This makes everything sorta flexible.*/
+			flex-direction: column;
+			min-height: 100vh;
+		}
+		header {
+			background-color: #212121;
+			padding: 10px;
+			text-align: center;
+		}
+		h1 {
+			font-family: 'Times New Roman', serif;
+			text-indent: 69px;
+		}
+		h2 {
+			font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			text-indent: 35px;
+			color: #FF5733;
+		}
+		a {
+			color: #00B4B4;
+		}
+		p { 
+			font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			font-size: larger;
+			color: #FF5733;
+			text-indent: 35px;
+		}
+		.intro {
+			font-size:xx-large;
+			flex: 1;
+		}
+		.stuff {
+			color: #7B68EE;
+			flex: 1;
+		}
+		.image-stack {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.image-stack img {
+			max-width: 100%;
+			margin-top: 20px;
+			margin-bottom: 10px;
+		}
+		table {
+			width: 80%;
+			align-self: center;
+			border-collapse: collapse;
+			border: 2px solid #7B68EE;
+		}
+		th, td {
+			color: #FF5733;
+			padding: 10px;
+			text-align: center;
+			border: 1px solid #7B68EE;
+		}
+		th {
+			background-color: #7B68EE;
+			color: #D3D3D3; /*Tabler Header Text Colour*/
+		}
+		tr:nth-child(even) {
+			background-color: #5c5c5c;
+		}
+		footer {
+			background-color: #212121;
+			text-align: center;
+			padding: 10px;
+		}
+	</style>
 </head>
-<body bgcolor="#def28d">
-    <h1 textcolor="purple">
-        LP1 Samir
-    </h1>
-    <h2>
-        I'm sure she's an amazing programmer!
-    </h2>
-    <p>
-        Here's the <a href="https://lysenkoist-duck.github.io/her/andreia1.html">link</a>.
-    </p>
+<body>
+	<div class="stuff">
+		<header>
+			<h1><a href="https://lysenkoist-duck.github.io/index.html" style="text-decoration: none; color: inherit;">LPI</a></h1>
+		</header>
+		<h2>
+			Below I'll leave some examples of fictional Honey Badger instances.
+		</h2>
+	</div>
+	<table>
+		<tr>
+			<th>Scientific Name</th>
+			<th>Favourite Food</th>
+			<th>Likes</th>
+			<th>Dislikes</th>
+			<th>Name</th>
+		</tr>
+		<tr>
+			<td>Mellivora capensis</td>
+			<td>Honey</td>
+			<td>Honey</td>
+			<td>Not finding honey</td>
+			<td>Roo</td>
+		</tr>
+		<tr>
+			<td>Mellivora capensis</td>
+			<td>Porcupines & Venomous Snakes</td>
+			<td>Roleplaying not being a honey badger</td>
+			<td>When someone doesn't play along</td>
+			<td>Ruckus</td>
+		</tr>
+		<tr>
+			<td>Mellivora capensis</td>
+			<td>Human hands</td>
+			<td>Giving high-fives to humans</td>
+			<td>Humans who are scared of him</td>
+			<td>Hander</td>
+		</tr>
+	</table>
+
+	<div class="image-stack">
+		<img src="https://www.animalspot.net/wp-content/uploads/2017/04/Honey-Badger-Memes.png">
+		<img src="https://img-9gag-fun.9cache.com/photo/aGz4Aj6_460s.jpg">
+		<img src="https://a-z-animals.com/media/animals/images/original/honey_badger.jpg" width="50%">
+	</div>
+
+	<div>
+		<p>
+			Here's the <a href="https://lysenkoist-duck.github.io/her/andreia1.html">link</a> for a page featuring some examples Pokémon objects.
+		</p>
+		<p>
+			And here's the <a href="https://oberstar.eu.org/share/Documents/The-Manga-guide-to-databases.pdf">link</a> for a manga about Databases.
+		</p>
+	</div>
+	<footer>
+		<p class="stuff">Made with a lot of love and care by Samir Saleh Godinho.</p>
+	</footer>
 </body>
 </html>
