@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tabela 2</title>
+	<style>
+		body {
+			background-color: black;
+		}
+		table{
+			border: 1px solid black;
+			border-collapse: collapse;
+			text-align: center;
+
+			font-family: Arial, Helvetica, sans-serif;
+		  }
+		th {
+			border: 1px solid black;
+			border-collapse: collapse;
+			text-align: left;
+
+			color: black;
+			background-color: rgb(66, 163, 66);
+
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			text-align: left;
+
+			font-family: Arial, Helvetica, sans-serif;
+
+			background-color: white;
+		}
+		td:nth-of-type(2) {
+			text-align: right;
+		}
+		td:nth-of-type(4) {
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+	<table align="center">
+		<tr>
+			<th style="text-align: center;" colspan="4">Orçamento de compra</th>
+		</tr>
+		<tr>
+			<th>Produto</th>
+			<th>Qtde</th>
+			<th>Preço</th>
+			<th>Preço Total</th>
+		</tr>
+		<tr>
+			<td colspan="4" style="border: none; height: 11px;"></td>
+		</tr>
+		<tr>
+			<td>Mouse sem fio</td>
+			<td>3</td>
+			<td>R$ &nbsp;&nbsp;30,00</td>
+			<td>R$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90,00</td>
+		</tr>
+		<tr>
+			<td>HD SSD 256GB</td>
+			<td>1</td>
+			<td>R$ 250,00</td>
+			<td>R$ &nbsp;&nbsp;&nbsp;250,00</td>
+		</tr>
+		<tr>
+			<td>Placa de Rede</td>
+			<td>1</td>
+			<td>R$ &nbsp;&nbsp;88,00</td>
+			<td>R$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90,00</td>
+		</tr>
+		<tr>
+			<td>Memória 8GB</td>
+			<td>2</td>
+			<td>R$ 179,00</td>
+			<td>R$ &nbsp;&nbsp;&nbsp;358,00</td>
+		</tr>
+		<tr>
+			<td colspan="4" style="border: none; height: 11px;"></td>
+		</tr>
+		<tr>
+			<th style="font-weight: normal;" colspan="3">Total a pagar</th>
+			<th style="font-weight: normal;" >R$ 786</th>
+		</tr>
+	</table>
+</body>
+</html>
