@@ -3,7 +3,7 @@
 
 body {
 	font-family: 'Poppins', sans-serif;
-	background-color: #333333;
+	background-color: #333;
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -25,19 +25,16 @@ a {
 	color: #00B4B4;
 }
 p { 
-	font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 	font-size: larger;
 	color: #FF5733;
 	text-indent: 35px;
 }
 dl { 
-	font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 	font-size: larger;
 	color: #FF5733;
 	text-indent: 35px;
 }
 dt { 
-	font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 	font-size: larger;
 	color: #FF5733;
 	text-indent: 35px;
