@@ -37,7 +37,7 @@ h1 {
 .button {
 	display: inline-block;
 	padding: 10px 20px;
-	background-color: #FF5733;
+	background-color: #e04a29;
 	color: #fff;  /*button text colour*/
 	border: none;
 	cursor: pointer;
@@ -48,7 +48,7 @@ h1 {
 }
 
 .button:hover {
-	background-color: #e04a29;
+	background-color: #FF5733;
 }
 
 .result {

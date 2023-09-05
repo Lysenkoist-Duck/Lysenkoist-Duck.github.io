@@ -1,81 +1,81 @@
 const quizData = [
 	{
-	question: 'What is the best language in the world?',
-	options: ['Python', 'C/C++', 'Java', 'Kotlin'],
-	answer: 'Python',
+		question: 'What is the best language in the world?',
+		options: ['Python', 'C/C++', 'Java', 'Kotlin'],
+		answer: 'Python',
 	},
 	{
-	question: 'Why it\'s Python?',
-	options: ['Dynamic Typing', 'Simple Syntax', 'Huge Community', 'All answers are correct'],
-	answer: 'All answers are correct',
+		question: 'Why it\'s Python?',
+		options: ['Dynamic Typing', 'Simple Syntax', 'Huge Community', 'All answers are correct'],
+		answer: 'All answers are correct',
 	},
 	{
-	question: 'Which of the following you can do with Python?',
-	options: ['AI Model', 'Automation Script', 'Game', 'All answers are correct'],
-	answer: 'All answers are correct',
+		question: 'Which of the following you can do with Python?',
+		options: ['AI Model', 'Automation Script', 'Game', 'All answers are correct'],
+		answer: 'All answers are correct',
 	},
 	{
-	question: 'What are some disadvantages of Python?',
-	options: [
-		'May require additional code from a low level language for best performance',
-		'Difficulty to Learn/Use',
-		'Low Speed',
-		'Python has no disadvantages'
-	],
-	answer: 'May require additional code from a low level language for best performance',
+		question: 'What are some disadvantages of Python?',
+		options: [
+			'May require additional code from a low level language for best performance',
+			'Difficulty to Learn/Use',
+			'Low Speed',
+			'Python has no disadvantages'
+		],
+		answer: 'May require additional code from a low level language for best performance',
 	},
 	{
-	question: 'Which of these companies use Python?',
-	options: [
-		'Google',
-		'Facebook/Meta',
-		'Amazon',
-		'All answers are correct',
-	],
-	answer: 'All answers are correct',
+		question: 'Which of these companies use Python?',
+		options: [
+			'Google',
+			'Facebook/Meta',
+			'Amazon',
+			'All answers are correct',
+		],
+		answer: 'All answers are correct',
 	},
 	{
-	question: 'What is the correct Python file type?',
-	options: ['python', 'pt', 'ipy', 'py'],
-	answer: 'py',
+		question: 'What is the correct Python file type?',
+		options: ['python', 'pt', 'ipy', 'py'],
+		answer: 'py',
 	},
 	{
-	question: 'What is the correct preferred way to define an anonymous function in Python that solves square root?',
-	options: [
-		'lambda x: x ** 0.5',
-		'from math import sqrt',
-		'lambda x: x 1/2',
-		'anon_func x: x ** 0.5',
-	],
-	answer: 'lambda x: x + 1',
+		question: 'What is the correct preferred way to define an anonymous function in Python that solves square root?',
+		options: [
+			'lambda x: x ** 0.5',
+			'from math import sqrt',
+			'lambda x: x 1/2',
+			'anon_func x: x ** 0.5',
+		],
+		answer: 'lambda x: x ** 0.5',
 	},
 	{
-	question: 'Who\'s the father of Python?',
-	options: ['Guido van Rossum', 'Gido van Rossum', 'Guido von Rossum', 'Guido van Rössum'],
-	answer: 'Guido van Rossum',
+		question: 'Who\'s the father of Python?',
+		options: ['Guido van Rossum', 'Gido van Rossum', 'Guido von Rossum', 'Guido van Rössum'],
+		answer: 'Guido van Rossum',
 	},
 	{
-	question: 'How do you handle exceptions in Python?',
-	options: [
-		`<pre>try: code
-		except: fallback code</pre>`,
+		question: 'How do you handle exceptions in Python?',
+		options: [
+			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">try: code
+	except: fallback code</pre>`,
 
-		`<pre>attempt: code
-		else: fallback code</pre>`,
+			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">attempt: code
+	else: fallback code</pre>`,
 
-		`<pre>try: code
-		else: fallback code</pre>`,
-		
-		`<pre>attempt: code
-		except: fallback code</pre>`,
-	],
-	answer: `<pre>try: code
+			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">try: code
+	else: fallback code</pre>`,
+
+			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">attempt: code
+	except: fallback code</pre>`,
+		],
+		answer: `<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">try: code
 	except: fallback code</pre>`,
 	},
 	{
-	question: 'Which is the correct keyword for defining a function in Python?',
-	options: ['def', 'func', 'function', 'define'],
-	answer: 'def',
+		question: 'Which is the correct keyword for defining a function in Python?',
+		options: ['def', 'func', 'function', 'define'],
+		answer: 'def',
 	},
 ];
 
@@ -91,8 +91,8 @@ let incorrectAnswers = [];
 
 function shuffleArray(array) {
 	for (let i = array.length - 1; i > 0; i--) {
-	const j = Math.floor(Math.random() * (i + 1));
-	[array[i], array[j]] = [array[j], array[i]];
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
 	}
 }
 
@@ -110,10 +110,8 @@ function displayQuestion() {
 	shuffleArray(shuffledOptions);
 
 	for (let i = 0; i < shuffledOptions.length; i++) {
-		// Parsing the html tags inside the strings.
-		$(".container").html(shuffledOptions[i]);
-
 		const option = document.createElement('label');
+		option.innerHTML = shuffledOptions[i];  // Good stuff!
 		option.className = 'option';
 
 		const radio = document.createElement('input');
@@ -121,10 +119,7 @@ function displayQuestion() {
 		radio.name = 'quiz';
 		radio.value = shuffledOptions[i];
 
-		const optionText = document.createTextNode(shuffledOptions[i]);
-
 		option.appendChild(radio);
-		option.appendChild(optionText);
 		optionsElement.appendChild(option);
 	}
 
