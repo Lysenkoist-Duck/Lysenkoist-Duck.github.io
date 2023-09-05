@@ -11,7 +11,7 @@ body {
 	width: 450px;
 	padding: 20px;
 	margin-top: 80px;
-	background-color: #fff;
+	background-color: #7B68EE;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
 }
@@ -37,8 +37,8 @@ h1 {
 .button {
 	display: inline-block;
 	padding: 10px 20px;
-	background-color: #428bca;
-	color: #fff;
+	background-color: #FF5733;
+	color: #fff;  /*button text colour*/
 	border: none;
 	cursor: pointer;
 	font-size: 16px;
@@ -48,7 +48,7 @@ h1 {
 }
 
 .button:hover {
-	background-color: #3071a9;
+	background-color: #e04a29;
 }
 
 .result {
