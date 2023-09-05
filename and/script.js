@@ -57,8 +57,8 @@ const quizData = [
 	{
 	question: 'How do you handle exceptions in Python?',
 	options: [
-		`try: code
-		except: fallback code`,
+		`<pre>try: code
+		except: fallback code</pre>`,
 		'attempt: code else: fallback code',
 		'try: code else: fallback code',
 		'attempt: code except: fallback code',
@@ -103,19 +103,19 @@ function displayQuestion() {
 	shuffleArray(shuffledOptions);
 
 	for (let i = 0; i < shuffledOptions.length; i++) {
-	const option = document.createElement('label');
-	option.className = 'option';
+		const option = document.createElement('label');
+		option.className = 'option';
 
-	const radio = document.createElement('input');
-	radio.type = 'radio';
-	radio.name = 'quiz';
-	radio.value = shuffledOptions[i];
+		const radio = document.createElement('input');
+		radio.type = 'radio';
+		radio.name = 'quiz';
+		radio.value = shuffledOptions[i];
 
-	const optionText = document.createTextNode(shuffledOptions[i]);
+		const optionText = document.createTextNode(shuffledOptions[i]);
 
-	option.appendChild(radio);
-	option.appendChild(optionText);
-	optionsElement.appendChild(option);
+		option.appendChild(radio);
+		option.appendChild(optionText);
+		optionsElement.appendChild(option);
 	}
 
 	quizContainer.innerHTML = '';
