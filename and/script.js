@@ -59,11 +59,18 @@ const quizData = [
 	options: [
 		`<pre>try: code
 		except: fallback code</pre>`,
-		'attempt: code else: fallback code',
-		'try: code else: fallback code',
-		'attempt: code except: fallback code',
+
+		`<pre>attempt: code
+		else: fallback code</pre>`,
+
+		`<pre>try: code
+		else: fallback code</pre>`,
+		
+		`<pre>attempt: code
+		except: fallback code</pre>`,
 	],
-	answer: 'try:\n\tcode\nexcept:\n\tfallback code',
+	answer: `<pre>try: code
+	except: fallback code</pre>`,
 	},
 	{
 	question: 'Which is the correct keyword for defining a function in Python?',
@@ -103,6 +110,9 @@ function displayQuestion() {
 	shuffleArray(shuffledOptions);
 
 	for (let i = 0; i < shuffledOptions.length; i++) {
+		// Parsing the html tags inside the strings.
+		$(".container").html(shuffledOptions[i]);
+
 		const option = document.createElement('label');
 		option.className = 'option';
 
