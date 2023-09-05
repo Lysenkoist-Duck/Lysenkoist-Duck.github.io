@@ -57,10 +57,11 @@ const quizData = [
 	{
 	question: 'How do you handle exceptions in Python?',
 	options: [
-		'try:<br>&nbsp;&nbsp;&nbsp;&nbsp;code<br>except:<br>&nbsp;&nbsp;&nbsp;&nbsp;fallback code',
-		'attempt:<br>&nbsp;&nbsp;&nbsp;&nbsp;code<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;fallback code',
-		'try:<br>&nbsp;&nbsp;&nbsp;&nbsp;code<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;fallback code',
-		'attempt:<br>&nbsp;&nbsp;&nbsp;&nbsp;code<br>except:<br>&nbsp;&nbsp;&nbsp;&nbsp;fallback code',
+		`try: code
+		except: fallback code`,
+		'attempt: code else: fallback code',
+		'try: code else: fallback code',
+		'attempt: code except: fallback code',
 	],
 	answer: 'try:\n\tcode\nexcept:\n\tfallback code',
 	},
