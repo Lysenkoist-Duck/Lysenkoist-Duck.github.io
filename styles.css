@@ -29,6 +29,11 @@ p {
 	color: #FF5733;
 	text-indent: 35px;
 }
+pre { 
+	font-size: larger;
+	color: #FF5733;
+	text-indent: 35px;
+}
 dl { 
 	font-size: larger;
 	color: #FF5733;

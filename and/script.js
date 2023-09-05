@@ -17,7 +17,7 @@ const quizData = [
 	{
 	question: 'What are some disadvantages of Python?',
 	options: [
-		'May require additional low level language code for best performance',
+		'May require additional code from a low level language for best performance',
 		'Difficulty to Learn/Use',
 		'Low Speed',
 		'Python has no disadvantages'
@@ -40,12 +40,12 @@ const quizData = [
 	answer: 'py',
 	},
 	{
-	question: 'What is the correct way to define an anonymous function in Python that receives a single argument and return it after adding 1 to it?',
+	question: 'What is the correct preferred way to define an anonymous function in Python that solves square root?',
 	options: [
-		'lambda x: x + 1',
+		'lambda x: x ** 0.5',
 		'from math import sqrt',
-		'lambda x: x++',
-		'anon_func x: x + 1',
+		'lambda x: x 1/2',
+		'anon_func x: x ** 0.5',
 	],
 	answer: 'lambda x: x + 1',
 	},
@@ -57,10 +57,10 @@ const quizData = [
 	{
 	question: 'How do you handle exceptions in Python?',
 	options: [
-		'try:\n\tcode\nexcept:\n\tfallback code',
-		'attempt:\n\tcode\nelse:\n\tfallback code',
-		'try:\n\tcode\nelse:\n\tfallback code',
-		'attempt:\n\tcode\nexcept:\n\tfallback code',
+		'try:<br>&nbsp;&nbsp;&nbsp;&nbsp;code<br>except:<br>&nbsp;&nbsp;&nbsp;&nbsp;fallback code',
+		'attempt:<br>&nbsp;&nbsp;&nbsp;&nbsp;code<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;fallback code',
+		'try:<br>&nbsp;&nbsp;&nbsp;&nbsp;code<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;fallback code',
+		'attempt:<br>&nbsp;&nbsp;&nbsp;&nbsp;code<br>except:<br>&nbsp;&nbsp;&nbsp;&nbsp;fallback code',
 	],
 	answer: 'try:\n\tcode\nexcept:\n\tfallback code',
 	},
