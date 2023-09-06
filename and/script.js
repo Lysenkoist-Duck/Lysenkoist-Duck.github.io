@@ -121,7 +121,6 @@ function displayQuestion() {
 
 	for (let i = 0; i < shuffledOptions.length; i++) {
 		const option = document.createElement('label');
-		option.innerHTML = shuffledOptions[i];  // Good stuff!
 		option.className = 'option';
 
 		const radio = document.createElement('input');
@@ -129,8 +128,20 @@ function displayQuestion() {
 		radio.name = 'quiz';
 		radio.value = shuffledOptions[i];
 
-		option.appendChild(radio);
-		optionsElement.appendChild(option);
+		// if the current question is the one about handling errors in Python
+		if (currentQuestion == 8) {
+			// The line below ensures HTML code will be parsed.
+			option.innerHTML = shuffledOptions[i];  // Good stuff!
+			option.appendChild(radio);
+			optionsElement.appendChild(option);
+		}
+		else {
+			const optionText = document.createTextNode(shuffledOptions[i]);
+
+			option.appendChild(radio);
+			option.appendChild(optionText);
+			optionsElement.appendChild(option);
+		}
 	}
 
 	quizContainer.innerHTML = '';  // Cleaning it from the previous questions.
