@@ -8,6 +8,7 @@ body {
 }
 
 .container {
+	/*height should be left on auto, so questions of all sizes can fit in nicely.*/
 	width: 450px;
 	padding: 20px;
 	margin-top: 80px;
@@ -32,6 +33,9 @@ h1 {
 .option {
 	display: block;
 	margin-bottom: 10px;
+	background-color: #5f4ec1;
+	border-radius: 10px;
+	padding: 10px;
 }
 
 .button {

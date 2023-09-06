@@ -11,7 +11,7 @@ const quizData = [
 	},
 	{
 		question: 'Which of the following you can do with Python?',
-		options: ['AI Model', 'Automation Script', 'Game', 'All answers are correct'],
+		options: ['AI Model', 'Automation Script', 'Game Development', 'All answers are correct'],
 		answer: 'All answers are correct',
 	},
 	{
@@ -55,22 +55,32 @@ const quizData = [
 		answer: 'Guido van Rossum',
 	},
 	{
-		question: 'How do you handle exceptions in Python?',
+		question: 'How do you handle errors in Python?',
 		options: [
-			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">try: code
-	except: fallback code</pre>`,
+			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">try:
+	code
+except:
+	fallback code</pre>`,
 
-			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">attempt: code
-	else: fallback code</pre>`,
+			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">attempt:
+	code
+else:
+	fallback code</pre>`,
 
-			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">try: code
-	else: fallback code</pre>`,
+			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">try:
+	code
+else:
+	fallback code</pre>`,
 
-			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">attempt: code
-	except: fallback code</pre>`,
+			`<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">attempt:
+	code
+except:
+	fallback code</pre>`,
 		],
-		answer: `<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">try: code
-	except: fallback code</pre>`,
+		answer: `<pre style="font-family: 'Poppins', sans-serif; display: flex; justify-content: center; width: 230px; padding: 10px; margin-top: 10px; background-color: #7B68EE; border-radius: 5px; margin-bottom: 5px;">try:
+	code
+except:
+	fallback code</pre>`,
 	},
 	{
 		question: 'Which is the correct keyword for defining a function in Python?',
@@ -123,31 +133,33 @@ function displayQuestion() {
 		optionsElement.appendChild(option);
 	}
 
-	quizContainer.innerHTML = '';
+	quizContainer.innerHTML = '';  // Cleaning it from the previous questions.
 	quizContainer.appendChild(questionElement);
 	quizContainer.appendChild(optionsElement);
 }
 
 function checkAnswer() {
 	const selectedOption = document.querySelector('input[name="quiz"]:checked');
+
+	// This if ensures an option has been marked before processing the input
 	if (selectedOption) {
-	const answer = selectedOption.value;
-	if (answer === quizData[currentQuestion].answer) {
-		score++;
-	} else {
-		incorrectAnswers.push({
-		question: quizData[currentQuestion].question,
-		incorrectAnswer: answer,
-		correctAnswer: quizData[currentQuestion].answer,
-		});
-	}
-	currentQuestion++;
-	selectedOption.checked = false;
-	if (currentQuestion < quizData.length) {
-		displayQuestion();
-	} else {
-		displayResult();
-	}
+		const answer = selectedOption.value;
+		if (answer === quizData[currentQuestion].answer) {
+			score++;
+		} else {
+			incorrectAnswers.push({
+				question: quizData[currentQuestion].question,
+				incorrectAnswer: answer,
+				correctAnswer: quizData[currentQuestion].answer,
+			});
+		}
+		currentQuestion++;
+		selectedOption.checked = false;
+		if (currentQuestion < quizData.length) {
+			displayQuestion();
+		} else {
+			displayResult();
+		}
 	}
 }
 
@@ -179,13 +191,13 @@ function showAnswer() {
 
 	let incorrectAnswersHtml = '';
 	for (let i = 0; i < incorrectAnswers.length; i++) {
-	incorrectAnswersHtml += `
+		incorrectAnswersHtml += `
 		<p>
 		<strong>Question:</strong> ${incorrectAnswers[i].question}<br>
 		<strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
 		<strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
 		</p>
-	`;
+		`;
 	}
 
 	resultContainer.innerHTML = `
