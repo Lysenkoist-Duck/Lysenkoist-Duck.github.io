@@ -89,6 +89,7 @@ except:
 	},
 ];
 
+
 const quizContainer = document.getElementById('quiz');
 const resultContainer = document.getElementById('result');
 const submitButton = document.getElementById('submit');
@@ -97,7 +98,8 @@ const showAnswerButton = document.getElementById('showAnswer');
 
 let currentQuestion = 0;
 let score = 0;
-let incorrectAnswers = [];
+let processedAnswers = [];
+
 
 function shuffleArray(array) {
 	for (let i = array.length - 1; i > 0; i--) {
@@ -105,6 +107,7 @@ function shuffleArray(array) {
 		[array[i], array[j]] = [array[j], array[i]];
 	}
 }
+
 
 function displayQuestion() {
 	const questionData = quizData[currentQuestion];
@@ -149,6 +152,7 @@ function displayQuestion() {
 	quizContainer.appendChild(optionsElement);
 }
 
+
 function checkAnswer() {
 	const selectedOption = document.querySelector('input[name="quiz"]:checked');
 
@@ -157,13 +161,14 @@ function checkAnswer() {
 		const answer = selectedOption.value;
 		if (answer === quizData[currentQuestion].answer) {
 			score++;
-		} else {
-			incorrectAnswers.push({
-				question: quizData[currentQuestion].question,
-				incorrectAnswer: answer,
-				correctAnswer: quizData[currentQuestion].answer,
-			});
 		}
+
+		processedAnswers.push({
+			question: quizData[currentQuestion].question,
+			chosenAnswer: answer,
+			correctAnswer: quizData[currentQuestion].answer,
+		});
+		
 		currentQuestion++;
 		selectedOption.checked = false;
 		if (currentQuestion < quizData.length) {
@@ -174,52 +179,75 @@ function checkAnswer() {
 	}
 }
 
+
 function displayResult() {
-	quizContainer.style.display = 'none';
-	submitButton.style.display = 'none';
-	retryButton.style.display = 'inline-block';
-	showAnswerButton.style.display = 'inline-block';
+	quizContainer.style.display = 'none';  // Hides the quiz container
+	submitButton.style.display = 'none';  // Hides the "submit" button
+	retryButton.style.display = 'inline-block';  // Displays the "retry" button
+	showAnswerButton.style.display = 'inline-block';  // Displays the "show answer" button
 	resultContainer.innerHTML = `You scored ${score} out of ${quizData.length}!`;
 }
 
+
 function retryQuiz() {
-	currentQuestion = 0;
-	score = 0;
-	incorrectAnswers = [];
-	quizContainer.style.display = 'block';
-	submitButton.style.display = 'inline-block';
-	retryButton.style.display = 'none';
-	showAnswerButton.style.display = 'none';
-	resultContainer.innerHTML = '';
-	displayQuestion();
+	quizContainer.style.display = 'block';  // Displays the quiz container
+	submitButton.style.display = 'inline-block';  // Displays the "submit" button
+	retryButton.style.display = 'none';  // Hides the "retry" button
+	showAnswerButton.style.display = 'none';  // Hides the "show answer" button
+	resultContainer.innerHTML = '';  // Erases the previous result
+
+	currentQuestion = 0;  // Resets the question counter, setting the quiz back to the start
+	score = 0;  // Resets the score
+	processedAnswers = [];  // Erases the wrong answers
+	displayQuestion();  // Starts the quiz again
 }
 
-function showAnswer() {
-	quizContainer.style.display = 'none';
-	submitButton.style.display = 'none';
-	retryButton.style.display = 'inline-block';
-	showAnswerButton.style.display = 'none';
 
-	let incorrectAnswersHtml = '';
-	for (let i = 0; i < incorrectAnswers.length; i++) {
-		incorrectAnswersHtml += `
-		<p>
-		<strong>Question:</strong> ${incorrectAnswers[i].question}<br>
-		<strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
-		<strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
-		</p>
-		`;
+function showAnswer() {
+	quizContainer.style.display = 'none';  // Hides the quiz container
+	submitButton.style.display = 'none';  // Hides the "submit" button
+	showAnswerButton.style.display = 'none';  // Hides the "show answer" button
+	retryButton.style.display = 'inline-block';  // Displays the "retry" button
+
+	/* TODO: Make an if below,
+	if there are no wrong answers,
+	then a congratulations message should appear on top as well.
+	Maybe such message should always appear,
+	and just vary slightly regarding the score/max score ratio.*/
+	let processedAnswersHTML = '';
+	for (let i = 0; i < processedAnswers.length; i++) {
+
+		if (processedAnswers[i].chosenAnswer == processedAnswers[i].correctAnswer) {
+			processedAnswersHTML += `
+			<p style="color: green">
+			<strong>Question:</strong> ${processedAnswers[i].question}<br>
+			<strong>Your Answer:</strong> ${processedAnswers[i].chosenAnswer}<br>
+			<strong>Correct Answer:</strong> ${processedAnswers[i].correctAnswer}
+			</p>
+			`;
+		}
+		else {
+			processedAnswersHTML += `
+			<p style="color: red">
+			<strong>Question:</strong> ${processedAnswers[i].question}<br>
+			<strong>Your Answer:</strong> ${processedAnswers[i].chosenAnswer}<br>
+			<strong>Correct Answer:</strong> ${processedAnswers[i].correctAnswer}
+			</p>
+			`;
+		}
 	}
 
 	resultContainer.innerHTML = `
 	<p>You scored ${score} out of ${quizData.length}!</p>
-	<p>Incorrect Answers:</p>
-	${incorrectAnswersHtml}
+	<p>Your Answers:</p>
+	${processedAnswersHTML}
 	`;
 }
 
+
+// Links the buttons to their respective function
 submitButton.addEventListener('click', checkAnswer);
 retryButton.addEventListener('click', retryQuiz);
 showAnswerButton.addEventListener('click', showAnswer);
 
-displayQuestion();
+displayQuestion();  // Starts the quiz loop
