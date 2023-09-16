@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact Form</title>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+<body>
+	<header>
+		<h1 class="stuff"><a href="https://lysenkoist-duck.github.io/index.html" style="text-decoration: none; color: inherit;">LPI</a></h1>
+	</header>
+
+	<h2>Contact Form</h2>
+
+	<form name="contact" action="got_you.html" method="post">
+		<table>
+			<tr>
+				<td><label for="name">Name:</label></td>
+				<td><input type="text" name="name" id="name"></td>
+			</tr>
+
+			<tr>
+				<td><label for="blood-type">Blood Type:</label></td>
+				<td>
+				<select name="blood-type" id="blood-type">
+					<option value="A">A</option>
+					<option value="B">B</option>
+					<option value="AB">AB</option>
+					<option value="O">O</option>
+				</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td><label>RH Factor:</label></td>
+				<td>
+					<label for="rh-positive">
+						<input type="radio" name="rh-factor" id="rh-positive" value="positive">Positive
+					</label>
+					<label for="rh-negative">
+						<input type="radio" name="rh-factor" id="rh-negative" value="negative">Negative
+					</label>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label for="email">Email:</label>
+				</td>
+				<td>
+					<input type="email" name="email" id="email">
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label for="fav-game">Favourite Game</label>
+				</td>
+				<td>
+					<input type="text" name="fav-game" id="fav-game">
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label for="fav-food">Favourite Food</label>
+				</td>
+				<td>
+					<input type="text" name="fav-food" id="fav-food">
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label for="fav-song">Favourite Song</label>
+				</td>
+				<td>
+					<input type="text" name="fav-song" id="fav-song">
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label for="fav-book">Favourite Book</label>
+				</td>
+				<td>
+					<input type="text" name="fav-book" id="fav-book">
+				</td>
+			</tr>
+
+			<tr>
+				<td><label for="observation">Observation:</label></td>
+				<td><textarea name="observation" id="observation" rows="4" cols="69"></textarea></td>
+			</tr>
+
+			<tr>
+				<td>
+					<input type="submit" value="Submit">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<footer>
+		<p class="stuff">Made with a lot of love and care by Samir Saleh Godinho.</p>
+	</footer>
+</body>
+</html>

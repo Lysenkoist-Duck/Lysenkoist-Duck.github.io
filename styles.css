@@ -12,15 +12,42 @@ body {
 	min-height: 100vh;
 }
 
+table {
+	border-collapse: collapse;
+	border-spacing: 5px;
+	border-width: 5px;
+	padding: 5px;
+	border-width: 5px;
+	flex-direction: row;
+	display: inline-block;
+}
+
+td {
+	padding-right: 69px;
+	margin: 15px;
+}
+
 header {
 	background-color: #212121;
 	padding: 10px;
 	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #f2f2f2;
+	padding: 20px;
 }
+
 h1 {
 	font-family: 'Times New Roman', serif; /*Font, fallback font.*/
 	text-indent: 69px;
 }
+
+h2 {
+	text-indent: 69px;
+}
+
 a {
 	color: #00B4B4;
 }
