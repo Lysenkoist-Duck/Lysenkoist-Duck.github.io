@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Formulário de Contato Teste</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<form method="post" onsubmit="alert('teste')">
+		<fieldset class="espacamentoAbaixo" id="boxIdentificacao">
+			<legend>Identificação do usuário</legend>
+			<p><label>Nome:<input type="text" placeholder="Nome completo" required size="20" maxlength="50"
+						name="txtNome" id="idNome" /> </label></p>
+			<p><label>Senha:<input type="password" placeholder="8 dígitos" required size="15" maxlength="8"
+						name="txtSenha" id="idSenha" /> </label></p>
+			<p><label>E-mail:<input type="email" placeholder="Digite o e-mail" size="25" name="txtEmail" id="idEmail" />
+				</label></p>
+			<fieldset id="boxSexo">
+				<legend>Sexo</legend>
+				<p>
+					<input type="radio" name="rdSexo" value="masc" id="rdSexoMasc" /> <label for="rdSexoMasc"> Masculino
+					</label><br />
+					<label><input type="radio" name="rdSexo" value="fem" /> Feminino</label>
+				</p>
+			</fieldset>
+			<p><label>Data de nascimento: <input type="date" name="txtDtNasc" /></label></p>
+		</fieldset>
+
+		<fieldset class="espacamentoAbaixo">
+			<legend>Mensagem do usuário</legend>
+			<p><label>Mensagem <br />
+					<textarea placeholder="Digite a mensagem" name="txtMensagem" rows="5"></textarea></label></p>
+		</fieldset>
+
+		<fieldset id="boxBotoes">
+			<legend>Ações do Formulário</legend>
+			<p>
+				<input type="submit" />
+				<input type="reset" value="Cancelar" />
+			</p>
+		</fieldset>
+
+	</form>
+</body>
+
+</html>
