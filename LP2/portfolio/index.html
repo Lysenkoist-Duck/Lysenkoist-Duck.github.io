@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>🐍Sammychka🌻</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="title">
+		<h1>Willkommen!</h1>
+	</div>
+
+	<nav>
+		<ul class="nav-bar">
+			<li class="nav-bar"><a href="#basic-info">Basic Info</a></li>
+			<li class="nav-bar"><a href="#likes">Likes</a></li>
+			<li class="nav-bar"><a href="#dislikes">Dislikes</a></li>
+			<li class="nav-bar"><a href="#about-me">About me</a></li>
+			<li class="nav-bar"><a href="#projects">Projects</a></li>
+			<li class="nav-bar"><a href="#contact">Contact</a></li>
+		</ul>
+	</nav>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<!-- Redundant (but pretty)
+	<div>
+		<h2>Table of Contents:</h2>
+		<ul>
+			<li><a href="#basic-info">Basic Info</a></li>
+			<li><a href="#likes">Likes</a></li>
+			<li><a href="#dislikes">Dislikes</a></li>
+			<li><a href="#about-me">About me</a></li>
+			<li><a href="#projects">Projects</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ul>
+	</div>
+	-->
+
+	<div id="basic-info">
+		<h2>Basic Info:</h2>
+		<p>NAME: Sam<span class="spoiler">ir</span> <span class="spoiler">Saleh</span> <span class="spoiler">Godinho</span></p>
+		<p>DOB: <span id="dob"></span></p>
+		<p>AGE: <span id="age"></span></p>
+	</div>
+
+	<div id="likes">
+		<h2>Likes:</h2>
+		<ul>
+			<li>Python</li>
+			<li>ゲーム</li>
+			<li>Milchreis mit Zimt</li>
+			<li><span class="pürpl">Pürpl</span></li>
+			<li><span class="spoiler">Блин</span></li>
+		</ul>
+	</div>
+
+	<div id="dislikes">
+		<h2>Dislikes:</h2>
+		<ul>
+			<li><span class="spoiler">Javascript</span></li>
+			<li>Pay-to-Win</li>
+			<li>Cravo (especialmente no arroz de leite)</li>
+			<li>People who don't like <span class="pürpl">Pürpl</span></li>
+			<li>Things that are too salty or sour</li> <!--да блин!-->
+		</ul>
+	</div>
+
+	<div id="about-me">
+		<!--Adicione seções para "Sobre Mim", "Projetos" e "Contato".-->
+		<section>
+			<h2>About me:</h2>
+			<p>I'm Sam (Sammy-boy as some may know me), I'm from Pelotas (like the vast majority of ppl and I know) and I was born very long ago (946688569).</p>
+			<p>I really like Monty Python Flying Circus, their sketches greatly helped me improve my English and I also really like their accent,<br>so it may seem like I'm biased, but I'm not, they're indeed great, so much they inspired the name of my favourite programming language: <span class="python">Python</span></p>
+		</section>
+	</div>
+
+	<div id="projects">
+		<h2>Projects:</h2>
+		<p>Following my teacher's advice, I will not reveal anything about it until Thursday.</p>
+	</div>
+
+	<div id="contact">
+		<h2>Contact:</h2>
+		<p>If you don't have my contact info at this point in time, I do not wish for you to acquire it.</p>
+	</div>
+
+	<div>
+		<form action="sla.php" method="POST">
+			<label for="name">Nome:</label>
+			<input type="text" id="name" name="name" required>
+		
+			<label for="email">E-mail:</label>
+			<input type="email" id="email" name="email" required>
+		
+			<label for="msg">Mensagem:</label>
+			<textarea id="msg" name="msg" rows="7" required></textarea>
+		
+			<input type="submit" value="Submit">
+			<input type="reset" value="Clear">
+		</form>
+	</div>
+
+	<script src="script/script.js"></script>
+
+</body>
+</html>

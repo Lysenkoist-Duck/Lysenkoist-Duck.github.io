@@ -1,0 +1,197 @@
+/* ===================================
+	Table of Content
+====================================== */
+
+
+/* 
+	- Google fonts
+	- General
+	- Spoiler
+*/
+
+
+/* ===================================
+	Google fonts
+====================================== */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500,600,700,800&display=swap');
+
+
+.main-font{font-family: 'Roboto', sans-serif;}
+.alt-font{font-family: 'Montserrat', sans-serif;}
+
+
+/* ===================================
+	General
+====================================== */
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	color: #696969;
+	background-color: cornsilk;
+	font-weight:300;
+	line-height:30px;
+	letter-spacing: 0.2px;
+	width: 100%;
+	margin-left: 6.9px;
+	padding-left: 6.9px;
+	display:flexbox;
+	overflow-x: hidden  /* Sem barrinha horizontal, yay!*/
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	line-height: 1.2;
+	font-weight: 5000;
+	font-family: 'Montserrat', sans-serif;
+	color: #404854;
+	text-shadow: 0.345px .345px #272b32;
+}
+
+.h1, h1 {
+	text-shadow: 1.4px 1.4px #272b32;
+	padding: 5vw;
+	font-size: 2.5em;
+	margin-bottom: 2em;
+	text-transform: uppercase;
+	letter-spacing: 10px;
+	text-align: center;
+	font-weight: 2000;
+}
+
+div {
+	background-color: antiquewhite;
+	padding: 34.5px;
+	margin: 69px;
+	border-radius: 69px;
+}
+
+a {
+	color:inherit;text-decoration: none;
+}
+
+a:active, a:hover{
+	color: #00bcd4;
+}
+
+
+/* *-* */
+.btn.focus, .btn:focus{
+	box-shadow: none;
+}
+
+/* Gets applied to my age for example */
+p:last-child{
+	margin-bottom: 0 !important;
+}
+
+/* Caso eu precise esconder algo...*/
+.hidden{
+	display: none;
+}
+
+
+.title {
+	background-color: aquamarine;  /* Eric's suggestion */
+}
+
+nav {
+	background-color: antiquewhite;
+	padding: 34.5px;
+	margin: 69px;
+
+	display: flex;
+	justify-content: center; /* Keep this here, else the nav bar li goes where it shouldn't */
+
+	font-size: 24px;
+
+	border-radius: 138px;
+}
+
+nav li {
+	display: inline;
+	
+	margin: 45px;
+
+	font-family: 'Lato';  /* I do not bark tho*/
+	font-weight: bold;
+
+}
+
+form {
+	margin: 0 auto;
+	max-width: 500px;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+}
+
+label {
+	font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 6.9px;
+	box-sizing: border-box;
+}
+
+
+textarea {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 6.9px;
+	box-sizing: border-box;
+}
+
+input[type="submit"],
+input[type="reset"] {
+	background-color: #56a8ff;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 6.9px;
+	cursor: pointer;
+}
+
+input[type="reset"] {
+	background-color: #ff5f6f;
+}
+
+
+
+
+/*==========================
+	Spoiler
+===========================*/
+.spoiler {
+	background-color: #000;
+	color: #000;
+	transition: color 1s;
+	border-radius: 10px; /* Nicee smooth roundy edge, hehehe */
+	padding: 2px 6px; /* Aumentar caso o texto escape */
+}
+
+.spoiler:hover {
+	color: #fff;
+}
+
+
+/*==========================
+	Pürpl
+===========================*/
+.pürpl {
+	color: purple;
+}
+
+.python {
+	color: #3776ab;
+}

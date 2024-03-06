@@ -1,0 +1,82 @@
+<title>Sammy Maps</title>
+<link rel="stylesheet" href="styles.css">
+<h1><a href="index.html">Sammy's Evaluation</a></h1>
+
+<form action="sammy_maps_output.php" method="POST">
+	<table id="bela">
+		<tr>
+			<td>
+				<label for="city">City:</label>
+			</td>
+			<td>
+				<input type="number" name="city[]" id="city1" required>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<label for="city">City:</label>
+			</td>	
+			<td>
+				<input type="number" name="city[]" id="city2" required>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<table>
+		<tr>
+			<td>0</td>
+			<td>Pelotas</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Rio Grande</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Guaiba</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Sao Lourenco</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>PoA</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Camaqua</td>
+		</tr>
+	</table>
+
+	<br>
+	<button type="button" onclick="addInput()">+</button>
+
+	<br>
+	<br>
+	<br>
+
+	<input type="submit" name="button" value="Submit">
+	<br>
+	<br>
+	<input type="reset" name="button" value="Clear">
+
+	<script>
+		function addInput() {
+			var table = document.getElementById("bela");
+			var row = table.insertRow(-1);
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			cell1.innerHTML = '<label for="city">City:</label>';
+			cell2.innerHTML = '<input type="number" name="city[]" id="city">';
+		}
+	</script>
+
+
+
+
+
+</form>
+
