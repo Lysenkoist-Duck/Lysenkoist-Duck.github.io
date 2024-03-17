@@ -53,28 +53,20 @@ class ContaBanco {
 	}
 	
 	public function abrirConta($tipo) {
-		if ($this->status) {
-			echo "A conta já está aberta, да блин!<br>";
+		$this->tipo = $tipo;
+		
+		if ($tipo == 'CC') {  // Conta Corrente
+			$this->saldo = 50;
 		}
-		else {
-			$this->tipo = $tipo;
-			$this->status = true;
-			
-			if ($tipo == 'CC') {  // Conta Corrente
-				$this->saldo = 50;
-			}
-			elseif ($tipo == 'CP') {  // Conta Paupança
-				$this->saldo = 100;
-			}
-			// TODO: Adicionar contas de outros tipos, como conta salário e conta paraíso fiscal.
-			echo "A conta foi aberta com sucesso.<br>";			
+		elseif ($tipo == 'CP') {  // Conta Paupança
+			$this->saldo = 100;
 		}
 	}
 
 	public function fecharConta() {
 		global $moeda;
 		if ($this->saldo == 0) {
-			$this->status = false;
+			$this->desativarConta();
 		} else {
 			echo "A conta não pode ser fechada, o saldo é diferente de {$moeda} 0.<br>";
 		}
@@ -106,20 +98,31 @@ class ContaBanco {
 
 	public function pagarMensal() {
 		global $moeda;
-		if ($this->status) {
-			$mensalidade = ($this->tipo == 'CC') ? 10 : 12;
+		$mensalidade = ($this->tipo == 'CC') ? 10 : 12;
+
+		if (!$this->status) {
+			echo "A conta está desativada, não é possível pagar a mensalidade.<br>";
+		}
+		elseif ($this->saldo <= $mensalidade) {
+			echo "Saldo insuficiente, não é possível pagar a mensalidade.<br>";
+		}
+		else {
 			$this->saldo -= $mensalidade;
 			echo "Mensalidade de valor {$moeda}{$mensalidade} paga com sucesso.<br>";
-		} else {
-			echo "A conta está desativada, não é possível pagar a mensalidade.<br>";
 		}
 	}
 
 	public function ativarConta() {
-		
+		if ($this->status) {
+			echo "A conta já está ativada, да блин!<br>";
+		}
+		else {
+			$this->status = true;
+			echo "A conta foi ativada com sucesso.<br>";
+		}
 	}
 
-	public function desativarConta() {
+	protected function desativarConta() {
 		global $moeda;
 		if (!$this->status) {
 			echo "A conta já foi desativada, да блин!<br>";
@@ -155,46 +158,65 @@ echo "Conta de número: " . $contaBob->getNumConta() . '<br>';
 $contaBob->abrirConta("CP");
 echo "Conta de tipo: " . $contaBob->getTipo() . "<br>";
 echo "Dono da conta: " . $contaBob->getDono() . '<br><br>';
+
+echo "<br>~~ANTES DA ATIVAÇÃO DA CONTA~~<br>";
+echo "Tentativa de imprimir o saldo da conta:<br>";
 $contaBob->imprimirSaldo();
 // echo "Saldo na conta: " . $contaBob->getSaldo() . "<br>";
-echo "Tentativa de depósito no valor de $moeda 200:<br>";
+echo "Tentativa de depósito no valor de {$moeda}200:<br>";
 $contaBob->depositar(200);
-echo "Tentativa de saque no valor de $moeda 50000:<br>";
+echo "Tentativa de saque no valor de {$moeda}50000:<br>";
 $contaBob->sacar(50000);
-echo "Tentativa de saque no valor de $moeda 50:<br>";
+echo "Tentativa de saque no valor de {$moeda}50:<br>";
 $contaBob->sacar(50);
 $contaBob->pagarMensal();
+
 // Depois de ativar a conta:
+echo "<br>~~DURANTE E APÓS A ATIVAÇÃO DA CONTA~~<br>";
+echo "Tentativa de ativação de conta:<br>";
+$contaBob->ativarConta();
+echo "Tentativa de ativação de conta:<br>";
 $contaBob->ativarConta();
 $contaBob->imprimirSaldo();
-echo "Tentativa de depósito no valor de $moeda 300:<br>";
+echo "Tentativa de depósito no valor de {$moeda}300:<br>";
 $contaBob->depositar(300);
+echo "Tentativa de imprimir o saldo da conta:<br>";
 $contaBob->imprimirSaldo();
-echo "Tentativa de saque no valor de $moeda 50000:<br>";
+echo "Tentativa de saque no valor de {$moeda}50000:<br>";
 $contaBob->sacar(50000);
 $contaBob->imprimirSaldo();
-echo "Tentativa de saque no valor de $moeda 50:<br>";
+echo "Tentativa de saque no valor de {$moeda}50:<br>";
 $contaBob->sacar(50);
 $contaBob->imprimirSaldo();
 $contaBob->pagarMensal();
+echo "Tentativa de imprimir o saldo da conta:<br>";
 $contaBob->imprimirSaldo();
 
 // Exemplo 2: Deutsch Stinkt Edition
-echo "<br><br>Exemplo da conta do Agostinha Slavostć:<br>";
+echo "<br><br>Exemplo da conta da Agostinha Slavostć:<br>";
 $contaAgostinha = new ContaBanco("Agostinha Slavostć");  // Clériga
 echo "Conta de número: " . $contaAgostinha->getNumConta() . '<br>';
 $contaAgostinha->abrirConta("CC");
 echo "Conta de tipo: " . $contaAgostinha->getTipo() . "<br>";
 echo "Dono da conta: " . $contaAgostinha->getDono() . '<br><br>';
 $contaAgostinha->ativarConta();
-echo "Tentativa de depósito no valor de $moeda 500:<br>";
+$contaAgostinha->imprimirSaldo();
+echo "Tentativa de depósito no valor de {$moeda}500:<br>";
 $contaAgostinha->depositar(500);
-echo "Tentativa de saque no valor de $moeda 345:<br>";
+$contaAgostinha->imprimirSaldo();
+echo "Tentativa de saque no valor de {$moeda}345:<br>";
 $contaAgostinha->sacar(345);
+$contaAgostinha->imprimirSaldo();
 $contaAgostinha->pagarMensal();
-$contaAgostinha->desativarConta();
+$contaAgostinha->imprimirSaldo();
+$contaAgostinha->fecharConta();
+echo "Tentativa de saque no valor de {$moeda}200:<br>";
 $contaAgostinha->sacar(200);
+echo "Tentativa de saque no valor de {$moeda}195:<br>";
 $contaAgostinha->sacar(195);
-$contaAgostinha->desativarConta();
-$contaAgostinha->desativarConta();
+$contaAgostinha->imprimirSaldo();
+echo "Tentativa de fechamento de conta:<br>";
+$contaAgostinha->fecharConta();
+echo "Tentativa de fechamento de conta:<br>";
+$contaAgostinha->fecharConta();
 ?>
