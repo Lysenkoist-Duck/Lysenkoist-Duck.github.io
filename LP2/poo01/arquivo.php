@@ -102,8 +102,9 @@ class Student {
 		$this->registration = $registration;
 	}
 
-	public function setGrade($subject, $grade) {
+	public static function setGrade($subject, $grade) {
 		if (!isset($this->grades[$subject])) {
+			// TODO: Set an individual index counter per subject
             $this->grades[$subject] = [];
         }
         $this->grades[$subject][] = $grade;
