@@ -68,20 +68,22 @@ class Student {
 	public function __construct($name, $course) {
 		$this->name = $name;
 		$this->course = $course;
-		// 20241VG.CTB_EAD0702
-		// strtoupper(substr($job, 0, 3))  // upper & sub string
 
-		/*
-		$number = 12345;
-		$alphadecimal = base_convert($number, 10, 36);
-		*/
+		if (!isset(self::$courseCount[$course])) {
+			self::$courseCount[$course] = 0;
+		}
+		self::$courseCount[$course]++;
+		$courseCount = base_convert(self::$courseCount[$course], 10, 16);  // Converting the course count to hexadecimal
+		$courseCount = strtoupper($courseCount);  // Setting it to upper
+		$courseCount = str_pad($courseCount, 3, '0', STR_PAD_LEFT);  // Padding with 0s to the left.
 
-		if (!isset(self::$jobCount[$job])) {
-            self::$jobCount[$job] = 0;
-        }
-        self::$jobCount[$job]++;
+		$cou = substr($course, 0, 3);  // Shortened course name
+		$cou = strtoupper($cou);  // Setting it to upper
 
-		$this->registration = $course . date("y") . "_" . str_pad(self::$courseCount[$course], 3, '0', STR_PAD_LEFT);
+		$this->registration = $cou . "_" . "VG" . date("Y") . "_" . $courseCount;  // Concatenating everything to build a very fancy registration! owo
+		if (rand(1, 100) <= 4) {
+			echo $this->registration . "<br>";
+		}
 	}
 
 	public function getName() {
@@ -100,7 +102,24 @@ class Student {
 		$this->registration = $registration;
 	}
 
-	/*public function calculateArea() {
+	public function setGrade($subject, $grade) {
+		if (!isset($this->grades[$subject])) {
+            $this->grades[$subject] = [];
+        }
+        $this->grades[$subject][] = $grade;
+	}
+
+	public function getGrade($subject) {
+		if (array_key_exists($subject, $this->grades)) {
+			return $this->grades[$subject];
+		}
+		else {
+			return "No grade recorded for $subject.";
+		}
+	}
+
+	/*
+	public function calculateArea() {
 		return pi() * ($this->getRadius() ** 2);
 	}
 	*/
