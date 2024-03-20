@@ -81,9 +81,9 @@ class Student {
 		$cou = strtoupper($cou);  // Setting it to upper
 
 		$this->registration = $cou . "_" . "VG" . date("Y") . "_" . $courseCount;  // Concatenating everything to build a very fancy registration! owo
-		if (rand(1, 100) <= 4) {
-			echo $this->registration . "<br>";
-		}
+		// if (rand(1, 100) <= 0) {
+		// 	echo $this->registration . "<br>";
+		// }
 	}
 
 	public function getName() {
@@ -104,7 +104,11 @@ class Student {
 
 	public static function setGrade($subject, $grade) {
 		if (!isset($this->grades[$subject])) {
-			// TODO: Set an individual index counter per subject
+			$subjectsGradesCounter = [];
+			if (!isset($subjectsGradesCounter[$subject])) {
+				$subjectsGradesCounter[$subject] = [];
+			}
+
             $this->grades[$subject] = [];
         }
         $this->grades[$subject][] = $grade;

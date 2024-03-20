@@ -21,7 +21,7 @@ echo "Perimeter: " . $cake->calculatePerimeter() . "<br>";
 echo "<br><br><br><hr><br><br><br>";
 
 $s1 = new Student("Sammy", "Systems Development");
-$s2 = new Student("Angiii", "Physics");
+$s2 = new Student("Angiii", "Physics");  # Fussy
 $s3 = new Student("Bob", "Systems Development");
 
 $s3->setGrade("Chemistry");
