@@ -63,7 +63,7 @@ class Student {
 	protected $name;
 	protected $course;
 	protected $registration;
-	protected $grades = [];
+	public $grades = [];
 
 	public function __construct($name, $course) {
 		$this->name = $name;
