@@ -30,10 +30,16 @@ Student::setGrade($s3, "Instrumental English I", 10);
 Student::setGrade($s3, "Computational Logic", 1);  # Before Geistreich
 Student::setGrade($s3, "Computational Logic", 7);  # After Geistreich
 
-echo $s3->viewSubjects(false);
+$name = $s3->getName();
+echo "$name has the following subjects: <br>";
+echo $s3->viewSubjects(false) . "<br>";
 
 echo "Programming Language I 1st Grade: " . $s3->getGrade("Programming Language I", 0) . "<br>";
 echo "Programming Language I 2nd Grade: " . $s3->getGrade("Programming Language I", 1) . "<br>";
-echo "Instrumental English I Grades:<br>" . $s3->getGrade("Instrumental English I");
-echo "Computational Logic Mean: " . $s3->calculateMean("Computational Logic");
+echo "Instrumental English I Grades:<br>" . $s3->getGrade("Instrumental English I") . "<br>";
+
+echo "Means:<br>";
+echo "Programming Language I Mean: " . $s3->calculateMean("Programming Language I") . "<br>";
+echo "Instrumental English I Mean: " . $s3->calculateMean("Instrumental English I") . "<br>";
+echo "Computational Logic Mean: " . $s3->calculateMean("Computational Logic") . "<br>";
 ?>

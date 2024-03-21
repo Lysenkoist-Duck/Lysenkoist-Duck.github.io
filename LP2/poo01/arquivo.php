@@ -142,7 +142,7 @@ class Student {
 		else {
 			$subjectsList = '';
 			foreach ($this->grades as $key => $element) {
-				$subjectsList .= $element . "<br>";
+				$subjectsList .= $key . "<br>";
 			}
 			return $subjectsList;
 		}
