@@ -38,8 +38,22 @@ echo "Programming Language I 1st Grade: " . $s3->getGrade("Programming Language 
 echo "Programming Language I 2nd Grade: " . $s3->getGrade("Programming Language I", 1) . "<br>";
 echo "Instrumental English I Grades:<br>" . $s3->getGrade("Instrumental English I") . "<br>";
 
-echo "Means:<br>";
-echo "Programming Language I Mean: " . $s3->calculateMean("Programming Language I") . "<br>";
-echo "Instrumental English I Mean: " . $s3->calculateMean("Instrumental English I") . "<br>";
-echo "Computational Logic Mean: " . $s3->calculateMean("Computational Logic") . "<br>";
+// echo "Means:<br>";
+// echo "Programming Language I Mean: " . $s3->calculateMean("Programming Language I") . "<br>";
+// echo "Instrumental English I Mean: " . $s3->calculateMean("Instrumental English I") . "<br>";
+// echo "Computational Logic Mean: " . $s3->calculateMean("Computational Logic") . "<br>";
+echo "<table style='border: none;'>";  # Perhaps unnecessary...
+echo "<tr><th colspan='3'>" . $s3->getName() . "'s Grades</th></tr>";  
+echo "<tr><th>Subject</th><th>Mean</th><th>Approved</th></tr>";
+echo "<tr><td>Programming Language I Mean: </td><td>" . $s3->calculateMean("Programming Language I") . "</td><td>" . ($s3->checkApproval("Programming Language I") ? "✔️" : "❌") . "</td></tr>";
+echo "<tr><td>Instrumental English I Mean: </td><td>" . $s3->calculateMean("Instrumental English I") . "</td><td>" . ($s3->checkApproval("Instrumental English I") ? "✔️" : "❌") . "</td></tr>";
+echo "<tr><td>Computational Logic Mean: </td><td>" . $s3->calculateMean("Computational Logic") . "</td><td>" . ($s3->checkApproval("Computational Logic") ? "✔️" : "❌") . "</td></tr>";
+echo "</table>";
+// echo "<tr><th>Means:</th></tr>";
+// echo "<tr><td>Programming Language I </td><td>" . ": " . $s3->calculateMean("Programming Language I") . "</td></tr>";
+// echo "<tr><td>Instrumental English I </td><td>" . ": " . $s3->calculateMean("Instrumental English I") . "</td></tr>";
+// echo "<tr><td>Computational Logic </td><td>" . ": " . $s3->calculateMean("Computational Logic") . "</td></tr>";
+// echo "</table>";
+
+
 ?>

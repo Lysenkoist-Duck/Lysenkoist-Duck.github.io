@@ -161,6 +161,15 @@ class Student {
 		$mean = $gradesSum / count($this->grades[$subject]);
 		return $mean;
 	}
+
+	public function checkApproval($subject) {
+		if ($this->calculateMean($subject) >= 6) {
+			return True;
+		}
+		else {
+			return False;
+		}
+	}
 	
 }
 
