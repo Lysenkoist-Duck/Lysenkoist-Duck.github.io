@@ -102,24 +102,26 @@ class Student {
 		$this->registration = $registration;
 	}
 
-	public static function setGrade($subject, $grade) {
-		if (!isset($this->grades[$subject])) {
-			$subjectsGradesCounter = [];
+	public static function setGrade($student, $subject, $grade) {
+		$subjectsGradesCounter = [];
+		if (!isset($student->grades[$subject])) {
 			if (!isset($subjectsGradesCounter[$subject])) {
-				$subjectsGradesCounter[$subject] = [];
+				$subjectsGradesCounter[$subject] = 0;
 			}
+			$subjectsGradesCounter[$subject]++;
 
-            $this->grades[$subject] = [];
-        }
-        $this->grades[$subject][] = $grade;
+			$student->grades[$subject] = [];
+		}
+		$student->grades[$subject][$subjectsGradesCounter[$subject]] = $grade;
 	}
 
-	public function getGrade($subject) {
-		if (array_key_exists($subject, $this->grades)) {
-			return $this->grades[$subject];
-		}
-		else {
-			return "No grade recorded for $subject.";
+	public function getGrade($subject = null, $grade) {  # TODO: Do the same thing done for $subject to $grade
+		if ($subject === null) {
+			return $this->grades;
+		} elseif (array_key_exists($subject, $this->grades)) {
+			return $this->grades[$subject];  # TODO: Make it a nice print since it'll be a list, ideally fancily ordered
+		} else {
+			return "No grades recorded for $subject.";
 		}
 	}
 

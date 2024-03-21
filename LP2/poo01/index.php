@@ -1,8 +1,6 @@
 <?php
 require("arquivo.php");
 
-echo "test";
-
 $pie = new Circle(22 / 7);
 echo "<h3>Pie</h3>";
 echo "Radius: " . $pie->getRadius() . "<br>";
@@ -24,6 +22,10 @@ $s1 = new Student("Sammy", "Systems Development");
 $s2 = new Student("Angiii", "Physics");  # Fussy
 $s3 = new Student("Bob", "Systems Development");
 
-$s3->setGrade("Chemistry");
-$s3->setGrade
+Student::setGrade($s3, "Programming Language I", 6);
+Student::setGrade($s3, "Instrumental English I", 8);
+Student::setGrade($s3, "Programming Language I", 9);
+Student::setGrade($s3, "Instrumental English I", 10);
+
+echo $s3->getGrade("Programming Language");
 ?>
