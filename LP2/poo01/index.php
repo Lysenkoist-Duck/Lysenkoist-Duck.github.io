@@ -22,10 +22,18 @@ $s1 = new Student("Sammy", "Systems Development");
 $s2 = new Student("Angiii", "Physics");  # Fussy
 $s3 = new Student("Bob", "Systems Development");
 
+# Explanation for this in the arquivo.php file, tho I also like the aesthetics of it.
 Student::setGrade($s3, "Programming Language I", 6);
 Student::setGrade($s3, "Instrumental English I", 8);
 Student::setGrade($s3, "Programming Language I", 9);
 Student::setGrade($s3, "Instrumental English I", 10);
+Student::setGrade($s3, "Computational Logic", 1);  # Before Geistreich
+Student::setGrade($s3, "Computational Logic", 7);  # After Geistreich
 
-echo $s3->getGrade("Programming Language");
+echo $s3->viewSubjects(false);
+
+echo "Programming Language I 1st Grade: " . $s3->getGrade("Programming Language I", 0) . "<br>";
+echo "Programming Language I 2nd Grade: " . $s3->getGrade("Programming Language I", 1) . "<br>";
+echo "Instrumental English I Grades:<br>" . $s3->getGrade("Instrumental English I");
+echo "Computational Logic Mean: " . $s3->calculateMean("Computational Logic");
 ?>

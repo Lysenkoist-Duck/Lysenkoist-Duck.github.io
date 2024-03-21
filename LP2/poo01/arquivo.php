@@ -102,34 +102,66 @@ class Student {
 		$this->registration = $registration;
 	}
 
+	# This was done in such an odd way cuz I started having ideas and only partly discarding them resulting in this complete mess,
+	# but I learned quite a bit so I decided to keep it that way.
 	public static function setGrade($student, $subject, $grade) {
-		$subjectsGradesCounter = [];
-		if (!isset($student->grades[$subject])) {
-			if (!isset($subjectsGradesCounter[$subject])) {
-				$subjectsGradesCounter[$subject] = 0;
-			}
-			$subjectsGradesCounter[$subject]++;
-
+		if (!array_key_exists($subject, $student->grades)) {
 			$student->grades[$subject] = [];
 		}
-		$student->grades[$subject][$subjectsGradesCounter[$subject]] = $grade;
+		$student->grades[$subject][] = $grade;
 	}
 
-	public function getGrade($subject = null, $grade) {  # TODO: Do the same thing done for $subject to $grade
+	public function getGrade($subject = null, $grade = null) {
 		if ($subject === null) {
 			return $this->grades;
 		} elseif (array_key_exists($subject, $this->grades)) {
-			return $this->grades[$subject];  # TODO: Make it a nice print since it'll be a list, ideally fancily ordered
+			if ($grade === null) {
+				$gradesList = '';
+				foreach ($this->grades[$subject] as $key => $element) {
+					$gradesIndex = $key + 1;
+					$gradesList .= "$gradesIndex ➤ " . $element . "<br>";
+				}
+				return $gradesList;  # A string list of all grades for the specified subject.
+			}
+			else {
+				return $this->grades[$subject][$grade];  # A string of a specific grade for the specified subject.
+			}
 		} else {
 			return "No grades recorded for $subject.";
 		}
 	}
 
-	/*
-	public function calculateArea() {
-		return pi() * ($this->getRadius() ** 2);
+	public function viewSubjects($returnAsList = true) {
+		if ($returnAsList) {
+			$subjectsList = [];
+			foreach ($this->grades as $key => $element) {
+				$subjectsList[] = $element;
+			}
+			return $subjectsList;
+		}
+		else {
+			$subjectsList = '';
+			foreach ($this->grades as $key => $element) {
+				$subjectsList .= $element . "<br>";
+			}
+			return $subjectsList;
+		}
 	}
-	*/
+
+	
+	public function calculateMean($subject) {
+		// foreach ($this->viewSubjects(true) as $key => $element) {
+		// 	$subjectsList = $subjectsList . $element . "<br>";
+		// }
+		$gradesSum = 0;
+		foreach ($this->grades[$subject] as $key => $element) {
+			$gradesSum += $element;
+		}
+
+		$mean = $gradesSum / count($this->grades[$subject]);
+		return $mean;
+	}
+	
 }
 
 ?>
