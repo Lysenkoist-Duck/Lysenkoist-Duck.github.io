@@ -1,9 +1,41 @@
 <head>
-    <style>
-        td {
-            text-align: center;
-        }
-    </style>
+	<style>
+		body {
+    		/* background: linear-gradient(to right, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff); */
+			background: #ffdfba;
+		}
+
+		table.brrr td {
+			width: 5em;
+		}
+		div.brrr {
+			margin-bottom: 1.69em;
+		}
+
+		table tr td {
+			text-align: center;
+		}
+		table tr td:nth-child(1) {
+			background-color: #FF6347;  /*Tomato*/
+		}
+		table tr td:nth-child(2) {
+			background-color: #FFD700;  /*Gold*/
+		}
+		table tr td:nth-child(3) {
+			background-color: #98FB98;  /*Pale Green*/
+		}
+		/* table tr td:nth-child(4) {
+			background-color: #87CEFA;  /*Light Sky Blue
+		} */
+		/* table tr td:nth-child(4) {
+			background-color: #9370DB;  /*Medium Purple
+		} */
+		table tr td:last-child {
+    		background-color: #9370DB;  /* Medium Purple */
+		}
+
+		
+	</style>
 </head>
 
 
@@ -75,7 +107,7 @@ $p1 = new Product("Iron Dagger", 20, 4);
 $p2 = new Product("Iron Sword", 50, 2);
 $p3 = new Product("Bronze Sword", 35, 0);
 
-echo "<table style='border: none;'>"; 
+echo "<table style='border: none;'>";
 echo "<tr><th>Name</th><th>Price</th><th>Quantity</th><th>Availability</th></tr>";
 echo "<tr><td>" . $p1->getName() . "</td><td>" . $p1->getPrice() . "</td><td>" . $p1->getQuantity() ."</td><td>" . ($p1->verifyAvailability() ? "✔️" : "❌") . "</td></tr>";
 echo "<tr><td>" . $p2->getName() . "</td><td>" . $p2->getPrice() . "</td><td>" . $p2->getQuantity() ."</td><td>" . ($p2->verifyAvailability() ? "✔️" : "❌") . "</td></tr>";
@@ -84,7 +116,33 @@ echo "</table>";
 
 echo "<br><br><br><hr><br><br><br>";
 
+// $t1 = new Triangle(3, 6, 9);
+// $t2 = new Triangle(9, 4, 6);
+// $t3 = new Triangle(4, 8, 16);
+$t1 = new Triangle(3, 6, 9);
+$t2 = new Triangle(6, 6, 9);
+$t3 = new Triangle(9, 6, 9);
+
+echo "<table style='border: none;'>";
+echo "<tr><th colspan='4'>Triangles</th></tr>";
+echo "<tr><th>Side 1</th><th>Side 2</th><th>Side 3</th><th>Is Valid</th></tr>";
+# TODO: Implement Triangle Image Generation with Python and add it as a 4th column.
+echo "<tr><td>" . $t1->getSide1() . "</td><td>" . $t1->getSide2() . "</td><td>" . $t1->getSide3() ."</td><td>" . ($t1->validate() ? "✔️" : "❌") . "</td></tr>";
+echo "<tr><td>" . $t2->getSide1() . "</td><td>" . $t2->getSide2() . "</td><td>" . $t2->getSide3() ."</td><td>" . ($t2->validate() ? "✔️" : "❌") . "</td></tr>";
+echo "<tr><td>" . $t3->getSide1() . "</td><td>" . $t3->getSide2() . "</td><td>" . $t3->getSide3() ."</td><td>" . ($t3->validate() ? "✔️" : "❌") . "</td></tr>";
+echo "</table>";
+
 echo "<br><br><br><hr><br><br><br>";
+
+$c1 = new Car("Ford", "K");
+$c1->viewVelocity();
+$c1->accelerate(40);
+$c1->viewVelocity();
+$c1->decelerate(5.5);
+$c1->viewVelocity();
+$c1->accelerate(34.5);
+$c1->viewVelocity();
+
 
 echo "<br><br><br><hr><br><br><br>";
 
