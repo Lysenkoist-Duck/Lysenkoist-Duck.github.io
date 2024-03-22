@@ -1,6 +1,6 @@
 <?php
 class Circle {
-	protected $radius;
+	private $radius;
 
 	public function __construct($radius) {
 		$this->radius = $radius;
@@ -25,7 +25,8 @@ class Circle {
 
 
 class Rectangle {
-	protected $radius;
+	private $width;
+	private $height;
 
 	public function __construct($width, $height) {
 		$this->width = $width;
@@ -60,10 +61,10 @@ class Rectangle {
 
 class Student {
 	private static $courseCount = [];
-	protected $name;
-	protected $course;
-	protected $registration;
-	public $grades = [];
+	private $name;
+	private $course;
+	private $registration;
+	private $grades = [];
 
 	public function __construct($name, $course) {
 		$this->name = $name;
@@ -171,6 +172,104 @@ class Student {
 		}
 	}
 	
+}
+
+
+class Employee {
+	private $name;
+	private $salary;
+	private $role;
+
+	public function __construct($name, $salary, $role) {
+		$this->name = $name;
+		$this->salary = $salary;  # Base Salary
+		$this->role = $role;
+	}
+
+
+	public function getName() {
+		return $this->name;
+	}
+
+	public function setName($name) {
+		$this->name = $name;
+	}
+
+	public function getSalary() {
+		return $this->salary;
+	}
+
+	public function setSalary($salary) {
+		$this->salary = $salary;
+	}
+
+	public function getRole() {
+		return $this->role;
+	}
+
+	public function setRole($role) {
+		$this->role = $role;
+	}
+
+	public function calculateNetSalary($tax = 0.1, $benefits = 0.02, $ot = 2) {
+		$netSalary = $this->getSalary();
+		$netSalary -= $this->salary * $tax;  # Discounting the taxes ;-;
+		$netSalary -= $this->salary * $benefits;  # Discounting the benefits ;u;
+		
+		# $overtimePay = $ot * 66.9;
+		# $netSalary += overtimePay;
+		return $netSalary;
+	}
+}
+
+
+class Product {
+    private $name;
+    private $price;
+    private $quantity;
+
+    public function __construct($name, $price, $quantity) {
+        $this->name = $name;
+        $this->price = $price;
+        $this->quantity = $quantity;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+    public function setPrice($price) {
+        $this->price = $price;
+    }
+
+    public function getQuantity() {
+        return $this->quantity;
+    }
+
+    public function setQuantity($quantity) {
+        $this->quantity = $quantity;
+    }
+
+    public function calculateTotalValue() {
+        $totalValue = $this->price * $this->quantity;
+        return $totalValue;
+    }
+
+    public function verifyAvailability() {
+        if ($this->quantity > 0) {
+            return True;
+        } else {
+            return False;
+        }
+    }
 }
 
 ?>
