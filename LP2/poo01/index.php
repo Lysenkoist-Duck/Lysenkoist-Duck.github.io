@@ -72,7 +72,7 @@ Student::setGrade($s3, "Computational Logic", 1);  # Before Geistreich
 Student::setGrade($s3, "Computational Logic", 7);  # After Geistreich
 
 $name = $s3->getName();
-echo "$name has the following subjects: <br>";
+echo "$name studies the following subjects: <br>";
 echo $s3->viewSubjects(false) . "<br>";
 
 # Retrieving grades from a subject while specifying the index:
@@ -143,6 +143,10 @@ $c1->viewVelocity();
 $c1->accelerate(34.5);
 $c1->viewVelocity();
 
+
+echo "<br><br><br><hr><br><br><br>";
+
+$patient1 = new Patient("");
 
 echo "<br><br><br><hr><br><br><br>";
 

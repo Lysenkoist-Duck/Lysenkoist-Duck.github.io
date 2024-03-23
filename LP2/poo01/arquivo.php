@@ -416,4 +416,188 @@ class Car {
 		$this->setVelocity(round($this->getVelocity(), 2));
 	}
 }
+
+
+class Consultation {
+	private $patientName;
+	private $doctorName;
+	private $date;
+	private $symptoms;
+	private $diagnosis;
+	private $prescription;
+	private $observations;
+	
+	public function __construct($patientName, $doctorName, $date = null) {
+		$this->patientName = $patientName;
+		$this->doctorName = $doctorName;
+		if ($date) {
+			$this->date = $date;
+		}
+		else {
+			$this->date = date("d-m-Y");
+		}
+	}
+
+	public function getPatientName() {
+		return $this->patientName;
+	}
+
+	public function setPatientName($patientName) {
+		$this->patientName = $patientName;
+	}
+
+	public function getDoctorName() {
+		return $this->DoctorName;
+	}
+
+	public function setDoctorName($DoctorName) {
+		$this->DoctorName = $DoctorName;
+	}
+
+	public function getDate() {
+		return $this->date;
+	}
+	
+	public function setDate($date) {
+		$this->date = $date;
+	}
+	
+	public function getSymptoms() {
+		return $this->symptoms;
+	}
+	
+	public function setSymptoms($symptoms) {
+		$this->symptoms = $symptoms;
+	}
+	
+	public function getDiagnosis() {
+		return $this->diagnosis;
+	}
+	
+	public function setDiagnosis($diagnosis) {
+		$this->diagnosis = $diagnosis;
+	}
+	
+	public function getPrescription() {
+		return $this->prescription;
+	}
+	
+	public function setPrescription($prescription) {
+		$this->prescription = $prescription;
+	}
+	
+	public function getObservations() {
+		return $this->observations;
+	}
+	
+	public function setObservations($observations) {
+		$this->observations = $observations;
+	}
+
+	public function display() {
+		echo "<table>";
+		echo "<tr><th>Patient Name</th><td>" . $this->getPatientName() . "</td></tr>";
+		echo "<tr><th>Doctor Name</th><td>" . $this->getDoctorName() . "</td></tr>";
+		echo "<tr><th>Date</th><td>" . $this->getDate() . "</td></tr>";
+		echo "<tr><th>Symptoms</th><td>" . $this->getSymptoms() . "</td></tr>";
+		echo "<tr><th>Diagnosis</th><td>" . $this->getDiagnosis() . "</td></tr>";
+		echo "<tr><th>Prescription</th><td>" . $this->getPrescription() . "</td></tr>";
+		echo "<tr><th>Observations</th><td>" . $this->getObservations() . "</td></tr>";
+		echo "</table>";
+		echo "<br>";
+	}
+}
+
+
+class Patient {
+	private $name;
+	private $age;
+	private $consultationHistory = [];
+
+	public function __construct($name, $age) {
+		$this->name = $name;
+		$this->age = $age;
+		$this->consultationHistory;
+	}
+
+	public function getName() {
+		return $this->name;
+	}
+
+	public function setName($name) {
+		$this->name = $name;
+	}
+
+	public function getAge() {
+		return $this->age;
+	}
+
+	public function setAge($age) {
+		$this->age = $age;
+	}
+
+	public function displayConsultation($id) {
+		$this->$consultationHistory[$id]->display();
+	}
+
+	public function displayAllConsultations() {
+		foreach($this->$consultationHistory as $consultation) {
+			$consultation->display();
+		}
+	}
+
+	public function appendConsultation($patientName, $doctorName, $date = null, $symptoms= null, $diagnosis = null, $prescription = null, $observations = null) {
+		$this->consultationHistory[] = new Consultation(
+			$patientName, $doctorName, $date, $symptoms, $diagnosis, $prescription, $observations
+		);
+	}
+
+	public function getPatientName($id) {
+		return $this->consultationHistory[$id]->patientName;
+	}
+	
+	public function setPatientName($id, $patientName) {
+		$this->consultationHistory[$id]->patientName = $patientName;
+	}
+
+	public function getDoctorName($id) {
+		return $this->consultationHistory[$id]->doctorName;
+	}
+	
+	public function setDoctorName($id, $doctorName) {
+		$this->consultationHistory[$id]->doctorName = $doctorName;
+	}
+
+	public function getDate($id) {
+		return $this->consultationHistory[$id]->date;
+	}
+	
+	public function setDate($id, $date) {
+		$this->consultationHistory[$id]->date = $date;
+	}
+
+	public function getSymptoms($id) {
+		return $this->consultationHistory[$id]->symptoms;
+	}
+	
+	public function setSymptoms($id, $symptoms) {
+		$this->consultationHistory[$id]->symptoms = $symptoms;
+	}
+
+	public function getDiagnosis($id) {
+		return $this->consultationHistory[$id]->diagnosis;
+	}
+	
+	public function setDiagnosis($id, $diagnosis) {
+		$this->consultationHistory[$id]->diagnosis = $diagnosis;
+	}
+
+	public function getObservations($id) {
+		return $this->consultationHistory[$id]->observations;
+	}
+	
+	public function setObservations($id, $observations) {
+		$this->consultationHistory[$id]->observations = $observations;
+	}
+}
 ?>
