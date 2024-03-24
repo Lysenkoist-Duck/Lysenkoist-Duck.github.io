@@ -1,0 +1,29 @@
+<!-- This file is a recycled mess put together at the last minute, please, do not judge it! -->
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PHP 🐘</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1 style="color: #7B68EE; text-align: center; left: 50%;">PHP 🐘</h1>
+	<div class="container">
+		<button onclick="downloadFile('https://lysenkoist-duck.github.io/LP2/poo01/index.php')" class="button" style="width:40%; height:40%;">Download index.php</button>
+		<button onclick="downloadFile('https://lysenkoist-duck.github.io/LP2/poo01/arquivo.php')" class="button" style="width:40%; height:40%;">Download arquivo.php</button>
+		<button onclick="downloadFile('https://lysenkoist-duck.github.io/LP2/poo01/cinema.php')" class="button" style="width:40%; height:40%;">Download cinema.php</button>
+		<button onclick="downloadFile('https://lysenkoist-duck.github.io/LP2/poo01/memes.php')" class="button" style="width:40%; height:40%;">Download memes.php</button>
+	</div>
+	<script>
+		function downloadFile(url) {
+			var link = document.createElement('a');
+			link.href = url;
+			link.download = url.split('/').pop();
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		}
+		</script>
+</body>
+</html>
