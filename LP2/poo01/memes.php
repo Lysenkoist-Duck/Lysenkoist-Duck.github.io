@@ -1,8 +1,7 @@
+<!-- I know doing it with JS alone would be way easier and stuff,  but we're doing PHP now so PHP it is!-->
 <?php
-// Array of image names
 $images = ['meme1.jpeg', 'meme10.jpg', 'meme11.png', 'meme12.jpg', 'meme13.png', 'meme14.png', 'meme15.png', 'meme16.png', 'meme17.jpg', 'meme18.png', 'meme19.png', 'meme2.jpg', 'meme20.jpg', 'meme21.jpg', 'meme22.png', 'meme3.jpg', 'meme4.jpg', 'meme5.png', 'meme6.png', 'meme7.jpg', 'meme8.png', 'meme9.png'];
 
-// Randomly choose an image from the array
 $selectedImage = $images[array_rand($images)];
 ?>
 
@@ -15,10 +14,10 @@ $selectedImage = $images[array_rand($images)];
 	<title>Memes</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-<h2>Memes</h2>
+<body style="color: #FFFFFF; background-color: #000000;">
+<h2>Memes (refresh for more)</h2>
 	<div class="container">
-		<img src="<?php echo $selectedImage; ?>" alt="Random Image">
+		<img src='<?php echo "https://lysenkoist-duck.github.io/LP2/poo01/memes/{$selectedImage}"; ?>' alt="Random  Programming Meme">
 	</div>
 </body>
 </html>
