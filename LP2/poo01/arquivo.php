@@ -15,11 +15,11 @@ class Circle {
 	}
 
 	public function calculateArea() {
-		return pi() * ($this->getRadius() ** 2);
+		return round(pi() * ($this->getRadius() ** 2), 2);
 	}
 
 	public function calculatePerimeter() {
-		return 2 * pi() * $this->getRadius();
+		return round(2 * pi() * $this->getRadius(), 2);
 	}
 }
 
@@ -120,7 +120,7 @@ class Student {
 				$gradesList = '';
 				foreach ($this->grades[$subject] as $key => $element) {
 					$gradesIndex = $key + 1;
-					$gradesList .= "$gradesIndex ➤ " . $element . "<br>";  # TODO: Improve
+					$gradesList .= "$gradesIndex ➤ " . $element . "<br>";  # TODO: Improve, add proper English
 				}
 				return $gradesList;  # A string list of all grades for the specified subject.
 			}
@@ -223,6 +223,7 @@ class Employee {
 }
 
 
+# TODO: Make it so they have a base price multiplied by a factor x which will change the price according to the amount that is available!
 class Product {
 	private $name;
 	private $price;
@@ -379,7 +380,7 @@ class Car {
 	public function viewVelocity() {
 		static $t = 0;
 		$t++;
-		echo "<table class='brrr' style='border: none;'>";
+		echo "<table class='brrr'>";
 		echo "<tr><th colspan='3'>$this->brand $this->model T$t</th></tr>";
 		echo "<tr><th>Km/h</th><th>mph</th><th>m/s</th></tr>";
 		echo "<tr><div class='brrr'><td>" . $this->getVelocity() . "</td><td>" . $this->getMeterPerSecond() . "</td><td>" . $this->getMilePerHour() ."</td></div></tr>";
@@ -426,6 +427,10 @@ class Consultation {
 	private $diagnosis;
 	private $prescription;
 	private $observations;
+	public $colour;
+
+	public static $colours = ["#9370DB", "#98FB98", "#FFB6C1"];
+	public static $colourIndex = 0;
 	
 	public function __construct($patientName, $doctorName, $date = null) {
 		$this->patientName = $patientName;
@@ -434,8 +439,12 @@ class Consultation {
 			$this->date = $date;
 		}
 		else {
-			$this->date = date("d-m-Y");
+			$this->date = date("d-m-y");
 		}
+		$this->colour = self::$colours[0];
+
+		$this->colour = self::$colours[self::$colourIndex];
+		self::$colourIndex = (self::$colourIndex + 1) % count(self::$colours);
 	}
 
 	public function getPatientName() {
@@ -447,7 +456,7 @@ class Consultation {
 	}
 
 	public function getDoctorName() {
-		return $this->DoctorName;
+		return $this->doctorName;
 	}
 
 	public function setDoctorName($DoctorName) {
@@ -494,30 +503,38 @@ class Consultation {
 		$this->observations = $observations;
 	}
 
+	public function getColour() {
+		return $this->colour;
+	}
+
+	public function setColour($colour) {
+		$this->colour = $colour;
+	}
+
 	public function display() {
-		echo "<table>";
-		echo "<tr><th>Patient Name</th><td>" . $this->getPatientName() . "</td></tr>";
-		echo "<tr><th>Doctor Name</th><td>" . $this->getDoctorName() . "</td></tr>";
-		echo "<tr><th>Date</th><td>" . $this->getDate() . "</td></tr>";
-		echo "<tr><th>Symptoms</th><td>" . $this->getSymptoms() . "</td></tr>";
-		echo "<tr><th>Diagnosis</th><td>" . $this->getDiagnosis() . "</td></tr>";
-		echo "<tr><th>Prescription</th><td>" . $this->getPrescription() . "</td></tr>";
-		echo "<tr><th>Observations</th><td>" . $this->getObservations() . "</td></tr>";
+		echo "<table class='medical-chart'>";
+		echo "<tr><th style = 'background-color: {$this->getColour()}'>Patient Name</th><td style = 'background-color: {$this->getColour()}'>" . $this->getPatientName() . "</td></tr>";
+		echo "<tr><th style = 'background-color: {$this->getColour()}'>Doctor Name</th><td style = 'background-color: {$this->getColour()}'>" . $this->getDoctorName() . "</td></tr>";
+		echo "<tr><th style = 'background-color: {$this->getColour()}'>Date</th><td style = 'background-color: {$this->getColour()}'>" . $this->getDate() . "</td></tr>";
+		echo "<tr><th style = 'background-color: {$this->getColour()}'>Symptoms</th><td style = 'background-color: {$this->getColour()}'>" . ($this->getSymptoms() ?? "N/A") . "</td></tr>";
+		echo "<tr><th style = 'background-color: {$this->getColour()}'>Diagnosis</th><td style = 'background-color: {$this->getColour()}'>" . ($this->getDiagnosis() ?? "N/A") . "</td></tr>";
+		echo "<tr><th style = 'background-color: {$this->getColour()}'>Prescription</th><td style = 'background-color: {$this->getColour()}'>" . ($this->getPrescription() ?? "N/A") . "</td></tr>";
+		echo "<tr><th style = 'background-color: {$this->getColour()}'>Observations</th><td style = 'background-color: {$this->getColour()}'>" . ($this->getObservations() ?? "N/A") . "</td></tr>";
 		echo "</table>";
-		echo "<br>";
 	}
 }
 
 
 class Patient {
 	private $name;
-	private $age;
-	private $consultationHistory = [];
+	private $age;  # Insert this attribute into the consultation history
+	private $consultationHistory;
 
-	public function __construct($name, $age) {
+	public function __construct($name, $age, $consultationHistory = null) {
 		$this->name = $name;
 		$this->age = $age;
-		$this->consultationHistory;
+		$this->consultationHistory = $consultationHistory ?? [];
+		# $this->consultationHistory = [];
 	}
 
 	public function getName() {
@@ -536,68 +553,172 @@ class Patient {
 		$this->age = $age;
 	}
 
-	public function displayConsultation($id) {
-		$this->$consultationHistory[$id]->display();
+	public function getAllConsultations() {
+		return $this->consultationHistory;
+	}
+
+	public function getConsultation($index) {
+		return $this->consultationHistory[$index];
+	}
+
+	public function setConsultation($index, $consultation) {
+		# Very unlikely to be used, yes, but you never know!
+		$this->consultationHistory[$index] = $consultation;
+	}
+
+	public function displayConsultation($index = 0)  /* Perhaps setting $index default value to 0 is a good practice I should replicate everywhere else, butt I'm too lazy to do it at this point in time, specially since I already set it everywhere without a default value...*/ {
+		$this->getConsultation($index)->display();
 	}
 
 	public function displayAllConsultations() {
-		foreach($this->$consultationHistory as $consultation) {
+		foreach($this->getAllConsultations() as $consultation) {
 			$consultation->display();
+			echo "<br>";
 		}
 	}
 
-	public function appendConsultation($patientName, $doctorName, $date = null, $symptoms= null, $diagnosis = null, $prescription = null, $observations = null) {
+	public function logConsultation($doctorName, $date = null, $symptoms= null, $diagnosis = null, $prescription = null, $observations = null) {
 		$this->consultationHistory[] = new Consultation(
-			$patientName, $doctorName, $date, $symptoms, $diagnosis, $prescription, $observations
+			$this->getName(), $doctorName, $date, $symptoms, $diagnosis, $prescription, $observations
 		);
 	}
 
-	public function getPatientName($id) {
-		return $this->consultationHistory[$id]->patientName;
+	public function getDoctorName($index) {
+		return $this->getConsultation($index)->getDoctorName();
 	}
 	
-	public function setPatientName($id, $patientName) {
-		$this->consultationHistory[$id]->patientName = $patientName;
+	public function setDoctorName($index, $doctorName) {
+		$this->getConsultation($index)->setDoctorName($doctorName);
 	}
 
-	public function getDoctorName($id) {
-		return $this->consultationHistory[$id]->doctorName;
+	public function getDate($index) {
+		return $this->getConsultation($index)->getDate();
 	}
 	
-	public function setDoctorName($id, $doctorName) {
-		$this->consultationHistory[$id]->doctorName = $doctorName;
+	public function setDate($index, $date) {
+		$this->getConsultation($index)->setDate($date);
 	}
 
-	public function getDate($id) {
-		return $this->consultationHistory[$id]->date;
+	public function getSymptoms($index) {
+		return $this->getConsultation($index)->getSymptoms();
 	}
 	
-	public function setDate($id, $date) {
-		$this->consultationHistory[$id]->date = $date;
+	public function setSymptoms($index, $symptoms) {
+		$this->getConsultation($index)->setSymptoms($symptoms);
 	}
 
-	public function getSymptoms($id) {
-		return $this->consultationHistory[$id]->symptoms;
+	public function getDiagnosis($index) {
+		return $this->getConsultation($index)->getDiagnosis();
 	}
 	
-	public function setSymptoms($id, $symptoms) {
-		$this->consultationHistory[$id]->symptoms = $symptoms;
+	public function setDiagnosis($index, $diagnosis) {
+		$this->getConsultation($index)->setDiagnosis($diagnosis);
 	}
 
-	public function getDiagnosis($id) {
-		return $this->consultationHistory[$id]->diagnosis;
+	public function getPrescription($index) {
+		return $this->getConsultation($index)->getPrescription();
 	}
 	
-	public function setDiagnosis($id, $diagnosis) {
-		$this->consultationHistory[$id]->diagnosis = $diagnosis;
+	public function setPrescription($index, $prescription) {
+		$this->getConsultation($index)->setPrescription($prescription);
 	}
 
-	public function getObservations($id) {
-		return $this->consultationHistory[$id]->observations;
+	public function getObservations($index) {
+		return $this->getConsultation($index)->getObservations();
 	}
 	
-	public function setObservations($id, $observations) {
-		$this->consultationHistory[$id]->observations = $observations;
+	public function setObservations($index, $observations) {
+		$this->getConsultation($index)->setObservations($observations);
 	}
 }
+
+
+class Buch {
+	# Fancy excuse v1:
+	# Please understand that due to the German grammar, I had to go against PHP's best code practices here, as I'm unable to commit grammar mistakes on purpose. Kind regards, Sammy-boy.
+
+	# Fancy excuse v2:
+	# Kindly note that due to the intricacies of German grammar, I was compelled to deviate from the best practices of PHP coding in this instance. My inability to intentionally make grammatical errors necessitated this course of action. I appreciate your understanding in this matter. Yours sincerely, Sammy-boy.
+
+	private $Titel;
+	private $Autor;
+	private $Seitenzahl;
+	private $Verfügbarkeit;
+	private $Ausleihverlauf;
+
+	private static $Bücher = [];
+
+	public function __construct($Titel, $Autor, $Seitenzahl) {
+		$this->Titel = $Titel;
+		$this->Autor = $Autor;
+		$this->Seitenzahl = $Seitenzahl;
+		$this->Verfügbarkeit = True;
+		$this->Ausleihverlauf = [];
+
+		self::$Bücher[] = $this;  # ♥
+	}
+
+	public function getTitel() {
+		return $this->Titel;
+	}
+
+	public function setTitel($Titel) {
+		$this->Titel = $Titel;
+	}
+
+	public function getAutor() {
+		return $this->Autor;
+	}
+
+	public function setAutor($Autor) {
+		$this->Autor = $Autor;
+	}
+
+	public function getSeitenzahl() {
+		return $this->Seitenzahl;
+	}
+
+	public function setSeitenzahl($Seitenzahl) {
+		$this->Seitenzahl = $Seitenzahl;
+	}
+
+	public function getVerfügbarkeit() {
+		return $this->Verfügbarkeit;
+	}
+
+	public function setVerfügbarkeit($Verfügbarkeit) {
+		$this->Verfügbarkeit = $Verfügbarkeit;
+	}
+
+	public function ausleihen() {
+		$this->Ausleihverlauf[date("d-m-y") . $this->getTitel()] = "ausgeliehen";  # Yes, I'm aware I could have simply used boolean values instead,
+		$this->setVerfügbarkeit(False);
+	}
+
+	public function zurückgeben() {
+		$this->Ausleihverlauf[date("d-m-y") . $this->getTitel()] = "zurückgegeben";  # but we both know I enjoy going overboard!  >:D
+		$this->setVerfügbarkeit(True);
+	}
+	
+	public function prüfen() {
+		return $this->getVerfügbarkeit();
+	}
+
+	public static function alleBücherAnzeigen() {
+		echo "<table class='bücher-chart'>";
+		echo "<tr><th>ID</th><th>Titel</th><th>Autor</th><th>Seitenzahl</th><th>Verfügbarkeit</th></tr>";
+		foreach(self::$Bücher as $Buch) {
+
+			# $colour = Consultation::$colours[Consultation::$colourIndex];
+			# Consultation::$colourIndex = (Consultation::$colourIndex + 1) % count(Consultation::$colours);
+
+			# echo "<tr style = 'background-color: $colour'><td>" . array_search($Buch, self::$Bücher) . "</td><td>" . $Buch->getTitel() . "</td><td>" . $Buch->getAutor() . "</td><td>" . $Buch->getSeitenzahl() ."</td><td>" . ($Buch->prüfen() ? "✔️" : "❌") . "</td></tr>";
+
+			echo "<tr><td>" . array_search($Buch, self::$Bücher) . "</td><td>" . $Buch->getTitel() . "</td><td>" . $Buch->getAutor() . "</td><td>" . $Buch->getSeitenzahl() ."</td><td>" . ($Buch->prüfen() ? "✔️" : "❌") . "</td></tr>";
+		}
+		echo "</table>";
+	}
+
+}
+
 ?>
