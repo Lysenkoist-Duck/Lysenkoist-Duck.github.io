@@ -3,7 +3,7 @@ class Circle {
 	private $radius;
 
 	public function __construct($radius) {
-		$this->radius = $radius;
+		$this->setRadius($radius);
 	}
 
 	public function getRadius() {
@@ -29,8 +29,8 @@ class Rectangle {
 	private $height;
 
 	public function __construct($width, $height) {
-		$this->width = $width;
-		$this->height = $height;
+		$this->setWidth($width);
+		$this->setHeight($height);
 	}
 
 	public function getWidth() {
@@ -67,8 +67,8 @@ class Student {
 	private $grades = [];
 
 	public function __construct($name, $course) {
-		$this->name = $name;
-		$this->course = $course;
+		$this->setName($name);
+		$this->setCourse($course);
 
 		if (!isset(self::$courseCount[$course])) {
 			self::$courseCount[$course] = 0;
@@ -76,12 +76,12 @@ class Student {
 		self::$courseCount[$course]++;
 		$courseCount = base_convert(self::$courseCount[$course], 10, 16);  // Converting the course count to hexadecimal
 		$courseCount = strtoupper($courseCount);  // Setting it to upper
-		$courseCount = str_pad($courseCount, 3, '0', STR_PAD_LEFT);  // Padding with 0s to the left.
+		$courseCount = str_pad($courseCount, 3, '0', STR_PAD_LEFT);  // Padding with 0s to the left, so it looks nice and fine, also for logistical reasons but that doesn't matter.
 
 		$cou = substr($course, 0, 3);  // Shortened course name
-		$cou = strtoupper($cou);  // Setting it to upper
+		$cou = strtoupper($cou);  // Changing it to uppercase
 
-		$this->registration = $cou . "_" . "VG" . date("Y") . "_" . $courseCount;  // Concatenating everything to build a very fancy registration! owo
+		$this->setRegistration($cou . "_" . "VG" . date("Y") . "_" . $courseCount);  // Concatenating everything to build a very fancy registration code! owo
 		// if (rand(1, 100) <= 0) {
 		// 	echo $this->registration . "<br>";
 		// }
@@ -93,6 +93,14 @@ class Student {
 
 	public function setName($name) {
 		$this->name = $name;
+	}
+
+	public function getCourse() {
+		return $this->course;
+	}
+
+	public function setCourse($course) {
+		$this->course = $course;
 	}
 
 	public function getRegistration() {
@@ -132,7 +140,7 @@ class Student {
 		}
 	}
 
-	public function viewSubjects($returnAsList = true) {
+	public function viewSubjects($returnAsList = True) {
 		if ($returnAsList) {
 			$subjectsList = [];
 			foreach ($this->grades as $key => $element) {
@@ -181,9 +189,9 @@ class Employee {
 	private $role;
 
 	public function __construct($name, $salary, $role) {
-		$this->name = $name;
-		$this->salary = $salary;  # Base Salary
-		$this->role = $role;
+		$this->setName($name);
+		$this->setSalary($salary);  # Base Salary
+		$this->setRole($role);
 	}
 
 
@@ -213,11 +221,13 @@ class Employee {
 
 	public function calculateNetSalary($tax = 0.1, $benefits = 0.02, $ot = 2) {
 		$netSalary = $this->getSalary();
-		$netSalary -= $this->salary * $tax;  # Discounting the taxes ;-;
-		$netSalary -= $this->salary * $benefits;  # Discounting the benefits ;u;
+		#PS: I assumed that the discounts were over his base salary.
+		$netSalary -= $this->getSalary() * $tax;  # Discounting the taxes ;-;
+		$netSalary -= $this->getSalary() * $benefits;  # Discounting the benefits ;u;
 		
 		# $overtimePay = $ot * 66.9;
 		# $netSalary += overtimePay;
+
 		return $netSalary;
 	}
 }
@@ -230,9 +240,9 @@ class Product {
 	private $quantity;
 
 	public function __construct($name, $price, $quantity) {
-		$this->name = $name;
-		$this->price = $price;
-		$this->quantity = $quantity;
+		$this->setName($name);
+		$this->setPrice($price);
+		$this->setQuantity($quantity);
 	}
 
 	public function getName() {
@@ -265,7 +275,8 @@ class Product {
 	}
 
 	public function verifyAvailability() {
-		if ($this->quantity > 0) {
+		# I'm aware I could have omitted the "> 0", but in case a bug happens and the quantity attribute goes negative, it would return true, which is among the worst-case scenarios from my humble perspective. Thus, I chose too keep it like this.
+		if ($this->getQuantity() > 0) {
 			return True;
 		} else {
 			return False;
@@ -280,9 +291,9 @@ class Triangle {
 	private $side3;
 
 	public function __construct($side1, $side2, $side3) {
-		$this->side1 = $side1;
-		$this->side2 = $side2;
-		$this->side3 = $side3;
+		$this->setSide1($side1);
+		$this->setSide2($side2);
+		$this->setSide3($side3);
 	}
 
 	public function getSide1() {
@@ -310,9 +321,9 @@ class Triangle {
 	}
 
 	public function validate() {
-		$check1 = $this->side1 + $this->side2 > $this->side3;
-		$check2 = $this->side1 + $this->side3 > $this->side2;
-		$check3 = $this->side2 + $this->side3 > $this->side1;
+		$check1 = $this->getSide1() + $this->getSide2() > $this->getSide3();
+		$check2 = $this->getSide1() + $this->getSide3() > $this->getSide2();
+		$check3 = $this->getSide2() + $this->getSide3() > $this->getSide1();
 		if ($check1 && $check2 && $check3) {
 			return True;
 		} else {
@@ -320,15 +331,21 @@ class Triangle {
 		}
 	}
 
+	# TODO: Implement hyperbolic triangle math to account for the "invalid" triangles
+	
 	public function calculatePerimeter() {
-		return $this->side1 + $this->side2 + $this->side3;
+		return $this->getSide1() + $this->getSide2() + $this->getSide3();
 	}
 	
 	public function calculateArea() {
-		$semiPerimeter = $this->calculateArea() / 2;
-		# TODO: Attempt using ** 0.5 instead
-		$area = sqrt($semiPerimeter * ($semiPerimeter - $this->side1) * ($semiPerimetro - $this->side2) * ($semiPerimeter - $this->side3));
-		return $area;
+		if ($this->validate()) {
+			$semiPerimeter = $this->calculatePerimeter() / 2;
+			$area = sqrt($semiPerimeter * ($semiPerimeter - $this->getSide1()) * ($semiPerimeter - $this->getSide2()) * ($semiPerimeter - $this->getSide3()));
+			return round($area, 2) . "<br>";
+		}
+		else {
+			return "Non-Euclidean Triangle<br>";  # I believe the term "invalid" to be greatly offensive towards triangles.
+		}
 	}
 }
 
@@ -340,9 +357,9 @@ class Car {
 	private $velocity;
 
 	public function __construct($brand, $model, $velocity = 0) {
-		$this->brand = $brand;
-		$this->model = $model;
-		$this->velocity = $velocity;
+		$this->setBrand($brand);
+		$this->setModel($model);
+		$this->setVelocity($velocity);
 	}
 
 	public function getBrand() {
@@ -381,7 +398,7 @@ class Car {
 		static $t = 0;
 		$t++;
 		echo "<table class='brrr'>";
-		echo "<tr><th colspan='3'>$this->brand $this->model T$t</th></tr>";
+		echo "<tr><th colspan='3'>" . $this->getBrand() . " " . $this->getModel() . " T$t</th></tr>";
 		echo "<tr><th>Km/h</th><th>mph</th><th>m/s</th></tr>";
 		echo "<tr><div class='brrr'><td>" . $this->getVelocity() . "</td><td>" . $this->getMeterPerSecond() . "</td><td>" . $this->getMilePerHour() ."</td></div></tr>";
 		echo "</table>";
@@ -433,18 +450,18 @@ class Consultation {
 	public static $colourIndex = 0;
 	
 	public function __construct($patientName, $doctorName, $date = null) {
-		$this->patientName = $patientName;
-		$this->doctorName = $doctorName;
+		$this->setPatientName($patientName);
+		$this->setDoctorName($doctorName);
 		if ($date) {
-			$this->date = $date;
+			$this->setDate($date);
 		}
 		else {
-			$this->date = date("d-m-y");
+			$this->setDate(date("d-m-y"));
 		}
-		$this->colour = self::$colours[0];
-
-		$this->colour = self::$colours[self::$colourIndex];
-		self::$colourIndex = (self::$colourIndex + 1) % count(self::$colours);
+		
+		$this->setColour(self::$colours[0]);  # Likely needless but rn I'm too afraid to break anything so I decided to keep it in.
+		$this->setColour(self::$colours[self::$colourIndex]);
+		self::$colourIndex = (self::$colourIndex + 1) % count(self::$colours);  # It wasn't specified if class attributes should also receive getters and or setters, so...
 	}
 
 	public function getPatientName() {
@@ -460,7 +477,7 @@ class Consultation {
 	}
 
 	public function setDoctorName($DoctorName) {
-		$this->DoctorName = $DoctorName;
+		$this->doctorName = $DoctorName;
 	}
 
 	public function getDate() {
@@ -531,10 +548,11 @@ class Patient {
 	private $consultationHistory;
 
 	public function __construct($name, $age, $consultationHistory = null) {
-		$this->name = $name;
-		$this->age = $age;
-		$this->consultationHistory = $consultationHistory ?? [];
-		# $this->consultationHistory = [];
+		$this->setName($name);
+		$this->setAge($age);
+
+		# I didn't define a setter for this one
+		$this->consultationHistory = $consultationHistory ?? [];  # Null Coalescense Operator ♥♥♥
 	}
 
 	public function getName() {
@@ -553,12 +571,18 @@ class Patient {
 		$this->age = $age;
 	}
 
-	public function getAllConsultations() {
+	# Unsure if this was the best approach...
+	public function getConsultationHistory() {
 		return $this->consultationHistory;
 	}
 
 	public function getConsultation($index) {
-		return $this->consultationHistory[$index];
+		return $this->getConsultationHistory([$index]);
+	}
+
+	public function setConsultationHistory($consultationHistory) {
+		# Very much unlikely to be used, yes, but you never know!!!
+		$this->consultationHistory = $consultationHistory;
 	}
 
 	public function setConsultation($index, $consultation) {
@@ -566,12 +590,12 @@ class Patient {
 		$this->consultationHistory[$index] = $consultation;
 	}
 
-	public function displayConsultation($index = 0)  /* Perhaps setting $index default value to 0 is a good practice I should replicate everywhere else, butt I'm too lazy to do it at this point in time, specially since I already set it everywhere without a default value...*/ {
-		$this->getConsultation($index)->display();
+	public function displayConsultation($index = 0)  /* Perhaps setting $index default value to 0 is a good practice I should replicate everywhere else in this class, butt I'm too lazy to do it at this point in time, specially since I already set it everywhere without a default value...*/ {
+		$this->getConsultation($index)[0]->display();
 	}
 
 	public function displayAllConsultations() {
-		foreach($this->getAllConsultations() as $consultation) {
+		foreach($this->getConsultationHistory() as $consultation) {
 			$consultation->display();
 			echo "<br>";
 		}
@@ -584,7 +608,7 @@ class Patient {
 	}
 
 	public function getDoctorName($index) {
-		return $this->getConsultation($index)->getDoctorName();
+		return $this->getConsultation($index)[0]->getDoctorName();
 	}
 	
 	public function setDoctorName($index, $doctorName) {
@@ -604,7 +628,7 @@ class Patient {
 	}
 	
 	public function setSymptoms($index, $symptoms) {
-		$this->getConsultation($index)->setSymptoms($symptoms);
+		$this->getConsultation($index)[0]->setSymptoms($symptoms);
 	}
 
 	public function getDiagnosis($index) {
@@ -612,7 +636,7 @@ class Patient {
 	}
 	
 	public function setDiagnosis($index, $diagnosis) {
-		$this->getConsultation($index)->setDiagnosis($diagnosis);
+		$this->getConsultation($index)[0]->setDiagnosis($diagnosis);
 	}
 
 	public function getPrescription($index) {
@@ -620,7 +644,7 @@ class Patient {
 	}
 	
 	public function setPrescription($index, $prescription) {
-		$this->getConsultation($index)->setPrescription($prescription);
+		$this->getConsultation($index)[0]->setPrescription($prescription);
 	}
 
 	public function getObservations($index) {
@@ -628,7 +652,7 @@ class Patient {
 	}
 	
 	public function setObservations($index, $observations) {
-		$this->getConsultation($index)->setObservations($observations);
+		$this->getConsultation($index)[0]->setObservations($observations);
 	}
 }
 
@@ -649,13 +673,13 @@ class Buch {
 	private static $Bücher = [];
 
 	public function __construct($Titel, $Autor, $Seitenzahl) {
-		$this->Titel = $Titel;
-		$this->Autor = $Autor;
-		$this->Seitenzahl = $Seitenzahl;
-		$this->Verfügbarkeit = True;
-		$this->Ausleihverlauf = [];
+		$this->setTitel($Titel);
+		$this->setAutor($Autor);
+		$this->setSeitenzahl($Seitenzahl);
+		$this->setVerfügbarkeit(True);
+		$this->setAusleihverlauf([]);
 
-		self::$Bücher[] = $this;  # ♥
+		self::$Bücher[] = $this;  # ♥  PS: I f♥cking lo♥e doing this sorta thing!
 	}
 
 	public function getTitel() {
@@ -688,6 +712,14 @@ class Buch {
 
 	public function setVerfügbarkeit($Verfügbarkeit) {
 		$this->Verfügbarkeit = $Verfügbarkeit;
+	}
+
+	public function getAusleihverlauf() {
+		return $this->Ausleihverlauf;
+	}
+
+	public function setAusleihverlauf($Ausleihverlauf) {
+		$this->Ausleihverlauf = $Ausleihverlauf;
 	}
 
 	public function ausleihen() {

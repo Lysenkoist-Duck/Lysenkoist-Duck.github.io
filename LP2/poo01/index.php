@@ -4,11 +4,15 @@
     		/* background: linear-gradient(to right, #ffb3ba, #ffdfba, #ffffba, #baffc9, #bae1ff); */
 			background: #EFEFCF;  # ♣
 			text-align: center;
+			margin: 12em;
+		}
+
+		hr {
+			margin: 5em auto;
 		}
 
 		table {
-			margin-left: auto;
-			margin-right: auto;
+			margin: 1em auto;
 		}
 
 		table.brrr td {
@@ -73,7 +77,7 @@ echo "Area: " . $pie->calculateArea() . "<br>";
 echo "Perimeter: " . $pie->calculatePerimeter() . "<br>";
 
 
-echo "<br><br><br><hr><br><br><br>";
+echo "<hr>";
 
 
 $cake = new Rectangle(6, 9);
@@ -84,7 +88,7 @@ echo "Area: " . $cake->calculateArea() . "<br>";
 echo "Perimeter: " . $cake->calculatePerimeter() . "<br>";
 
 
-echo "<br><br><br><hr><br><br><br>";
+echo "<hr>";
 
 
 # εψηο
@@ -141,7 +145,7 @@ echo "<tr><td>Computational Logic</td><td>" . $s1->calculateMean("Computational 
 echo "</table>";
 
 
-echo "<br><br><br><hr><br><br><br>";
+echo "<hr>";
 
 
 $dude = new Employee("Bobson Almeida", 6900, "Penguinologist");
@@ -153,7 +157,7 @@ echo "<tr><td>" . $dude->getSalary() . "</td><td>" . $dude->calculateNetSalary()
 echo "</table>";
 
 
-echo "<br><br><br><hr><br><br><br>";
+echo "<hr>";
 
 
 $p1 = new Product("Iron Dagger", 20, 4);
@@ -168,7 +172,7 @@ echo "<tr><td>" . $p3->getName() . "</td><td>" . $p3->getPrice() . "</td><td>" .
 echo "</table>";
 
 
-echo "<br><br><br><hr><br><br><br>";
+echo "<hr>";
 
 
 // $t1 = new Triangle(3, 6, 9);
@@ -178,19 +182,23 @@ $t1 = new Triangle(3, 6, 9);
 $t2 = new Triangle(6, 6, 9);
 $t3 = new Triangle(9, 6, 9);
 
-echo "<h3 style='font-size: 3em;'>△Δ▲</h3>";
+echo "<h3 style='font-size: 3em;'>△ Δ ▲</h3>";
 
-echo "<table'>";
+echo "<table>";
 echo "<tr><th colspan='4'>Triangles</th></tr>";
 echo "<tr><th>Side 1</th><th>Side 2</th><th>Side 3</th><th>Is Valid</th></tr>";
-# TODO: Implement Triangle Image Generation with Python and add it as a 4th column.
+# TODO: Implement Triangle Image Generation with Python and add it as another column.
 echo "<tr><td>" . $t1->getSide1() . "</td><td>" . $t1->getSide2() . "</td><td>" . $t1->getSide3() ."</td><td>" . ($t1->validate() ? "✔️" : "❌") . "</td></tr>";
 echo "<tr><td>" . $t2->getSide1() . "</td><td>" . $t2->getSide2() . "</td><td>" . $t2->getSide3() ."</td><td>" . ($t2->validate() ? "✔️" : "❌") . "</td></tr>";
 echo "<tr><td>" . $t3->getSide1() . "</td><td>" . $t3->getSide2() . "</td><td>" . $t3->getSide3() ."</td><td>" . ($t3->validate() ? "✔️" : "❌") . "</td></tr>";
 echo "</table>";
 
+echo $t1->calculateArea();
+echo $t2->calculateArea();
+echo $t3->calculateArea();
 
-echo "<br><br><br><hr><br><br><br>";
+
+echo "<hr>";
 
 
 $c1 = new Car("Ford", "K");
@@ -203,7 +211,7 @@ $c1->accelerate(34.5);
 $c1->viewVelocity();
 
 
-echo "<br><br><br><hr><br><br><br>";
+echo "<hr>";
 
 
 $patient1 = new Patient("Samkelisiwe Cool Beans", 23);
@@ -241,7 +249,7 @@ $patient1->setObservations(1, "PLEASE, <b>DO NOT SKATEBOARD ON A ROOFTOP</b> EVE
 $patient1->displayConsultation(1);
 
 
-echo "<br><br><br><hr><br><br><br>";
+echo "<hr>";
 
 
 $b1 = new Buch("Das Parfum", "Patrick Süskind", 263);
@@ -279,6 +287,6 @@ $b11->zurückgeben();
 
 Buch::alleBücherAnzeigen();
 
-echo "<br><br><br><hr><br><br><br>";
+echo "<hr>";
 
 ?>
