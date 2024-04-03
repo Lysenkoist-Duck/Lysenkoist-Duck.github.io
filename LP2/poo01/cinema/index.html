@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cinema</title>
+	<style>
+		body {
+			text-align: center;
+			background-color: bisque;
+		}
+		table {
+			margin: 1em auto;
+		}
+	</style>
+</head>
+<body>
+	<form action="inserirSalaCinema.php" method="POST">
+		<table id="bela">
+            <tr>
+                <td>
+                    <label for="num">Número:</label>
+                </td>
+                <td>
+                    <input type="text" name="num" id="num" required>
+                </td>
+            </tr>
+			<tr>
+                <td>
+                    <label for="desc">Descrição:</label>
+                </td>
+                <td>
+                    <input type="text" name="desc" id="desc" required>
+                </td>
+            </tr>
+			<tr>
+                <td>
+                    <label for="cap">Capacidade:</label>
+                </td>
+                <td>
+                    <input type="text" name="cap" id="cap" required>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" name="button" value="Submit">
+        <br>
+        <br>
+        <input type="reset" name="button" value="Clear">
+	</form>
+</body>
+</html>
