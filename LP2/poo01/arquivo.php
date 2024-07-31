@@ -233,7 +233,7 @@ class Employee {
 }
 
 
-# TODO: Make it so they have a base price multiplied by a factor x which will change the price according to the amount that is available!
+# TODO: Make it so they have a base price multiplied by a factor x which will change the price according to the amount that is available! This way it'll be moar realistical
 class Product {
 	private $name;
 	private $price;
@@ -270,13 +270,17 @@ class Product {
 	}
 
 	public function calculateTotalValue() {
-		$totalValue = $this->price * $this->quantity;
+		$totalValue = $this->getPrice() * $this->getQuantity();
 		return $totalValue;
 	}
 
 	public function verifyAvailability() {
+<<<<<<< HEAD
+		if ($this->getQuantity() > 0) {
+=======
 		# I'm aware I could have omitted the "> 0", but in case a bug happens and the quantity attribute goes negative, it would return true, which is among the worst-case scenarios from my humble perspective. Thus, I chose too keep it like this.
 		if ($this->getQuantity() > 0) {
+>>>>>>> 1ef26835c6f2ac44a7c97a151b70eb17c5c759b6
 			return True;
 		} else {
 			return False;
@@ -338,6 +342,12 @@ class Triangle {
 	}
 	
 	public function calculateArea() {
+<<<<<<< HEAD
+		$semiPerimeter = $this->calculatePerimeter() / 2;
+		# TODO: Attempt using ** 0.5 instead
+		$area = sqrt($semiPerimeter * ($semiPerimeter - $this->getSide1()) * ($semiPerimetro - $this->getSide2()) * ($semiPerimeter - $this->getSide3()));
+		return $area;
+=======
 		if ($this->validate()) {
 			$semiPerimeter = $this->calculatePerimeter() / 2;
 			$area = sqrt($semiPerimeter * ($semiPerimeter - $this->getSide1()) * ($semiPerimeter - $this->getSide2()) * ($semiPerimeter - $this->getSide3()));
@@ -346,6 +356,7 @@ class Triangle {
 		else {
 			return "Non-Euclidean Triangle<br>";  # I believe the term "invalid" to be greatly offensive towards triangles.
 		}
+>>>>>>> 1ef26835c6f2ac44a7c97a151b70eb17c5c759b6
 	}
 }
 
@@ -398,7 +409,11 @@ class Car {
 		static $t = 0;
 		$t++;
 		echo "<table class='brrr'>";
+<<<<<<< HEAD
+		echo "<tr><th colspan='3'> " . $this->getBrand() . . " " . $this->getModel() . " T$t</th></tr>";
+=======
 		echo "<tr><th colspan='3'>" . $this->getBrand() . " " . $this->getModel() . " T$t</th></tr>";
+>>>>>>> 1ef26835c6f2ac44a7c97a151b70eb17c5c759b6
 		echo "<tr><th>Km/h</th><th>mph</th><th>m/s</th></tr>";
 		echo "<tr><div class='brrr'><td>" . $this->getVelocity() . "</td><td>" . $this->getMeterPerSecond() . "</td><td>" . $this->getMilePerHour() ."</td></div></tr>";
 		echo "</table>";

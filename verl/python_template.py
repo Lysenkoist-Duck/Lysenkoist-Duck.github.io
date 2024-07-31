@@ -1,3 +1,5 @@
+# This file is just a template and is not meant to be ran on its own!
+
 from subprocess import call
 from platform import system
 from getpass import getpass
