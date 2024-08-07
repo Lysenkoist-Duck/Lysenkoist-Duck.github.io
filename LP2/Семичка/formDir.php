@@ -37,7 +37,14 @@
 
 			# This lists the directors on the top of the page
 			while ($row = $result->fetch_assoc()) {
-				echo "<tr><td>" . $row["codigo_diretor"] . "</td><td>" . $row["nome_diretor"];
+				# TODO: Add an "Editar" button, this one needs to hide itself and reveal the "Salvar" button when clicked
+				# TODO: Add a hidden "Salvar" button, this one needs to redirect to a PHP page which will run something similar to the following:
+				# $sql = 'UPDATE pessoas SET nome = "'.$pessoa->getNome().'", cpf = "'.$pessoa->getCpf().'", email = "'.$pessoa->getEmail().'" WHERE id = "'.intval($pessoa->getId()).'"';
+				echo "<tr data-row-id='" . $row["codigo_diretor"] . "'><td>";
+				echo $row["codigo_diretor"];
+				echo "</td><td>";
+				echo $row["nome_diretor"];
+				echo "</td><td><button type='button' onclick='edit( . $row["codigo_diretor"] . )'>Editar</button></td></tr>";
 
 				$r1 = $row["codigo_diretor"];
 				$r2 = $row["nome_diretor"];
@@ -45,10 +52,9 @@
 				echo "<script>db.cod.push('$r1');</script>";
 				echo "<script>db.nome.push('$r2');</script>";
 			}
-			
-			echo "<tr id='checkboxButt'><td colspan=4><button type='button' onclick='addCheckboxAndButt()'>Deletar Diretores</button></td></tr>";
-			echo "<tr><td id='delButt' colspan=4><button id='actualDelButt' type='submit' hidden>Deletar Diretores Selecionados</button></tr>";
-			//echo "</form>";
+			echo "<tr id='insFormButt'><td colspan=5><button type='button' onclick='(toggleInsForm()'>Inserir Diretores</button></td></tr>";
+			echo "<tr id='checkboxButt'><td colspan=5><button type='button' onclick='addCheckboxAndButt()'>Deletar Diretores</button></td></tr>";
+			echo "<tr><td id='delButt' colspan=5><button id='actualDelButt' type='submit' hidden>Deletar Diretores Selecionados</button></tr>";
 		} else {
 			echo "Nenhum dado encontrado.";  # TODO: Add meme here too
 		}
@@ -56,7 +62,7 @@
 	</table>
 	</form>
 
-	<form action="insDir.php" method="POST">
+	<form id="insForm" action="insDir.php" method="POST">
 	<table>
 		<tr>
 			<td colspan=2>
@@ -79,7 +85,22 @@
 	</table>
 	</form>
 	<script>
-		function addCheckboxAndButt() {
+		function toggleInsForm() {
+			let insForm = document.getElementById("insForm");
+			if (insForm.getAttribute("hidden")) {
+				insForm.removeAttribute("hidden");
+			}
+			else {
+				insForm.setAttribute("hidden", "hidden");
+			}
+		}
+
+		function edit(id) {
+			const row = document.querySelector(`tr[data-row-id="${rowId}"]`);
+
+		}
+
+		function addCheckboxAndButt() {  // TODO: Polish this function so that it doesn't create and instead only reveal
 			var table = document.getElementById("bela");
 
 			var headerRow = table.rows[0];
