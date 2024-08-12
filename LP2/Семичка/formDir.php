@@ -30,73 +30,75 @@
 				<th>Nome</th>
 			</tr>
 
-		<?php
-			if ($result->num_rows > 0) {
-				$db = [];  # for retrieving data from the db down the line
+			<?php
+				if ($result->num_rows > 0) {
+					$db = [];  # for retrieving data from the db down the line
 
-				# Possível futuro resquício evolutivo
-				echo <<<HTML
-					<script>
-						const db = {cod:[], nome:[]};
-					</script>
-				HTML;
-
-				# This returns the directors data on the top of the page
-				while ($row = $result->fetch_assoc()) {
-					$r1 = $row["codigo_diretor"];
-					$r2 = $row["nome_diretor"];
-
-					$db[] = [
-						"cod" => $r1,
-						"nome" => $r2
-					];
-
+					# Possível futuro resquício evolutivo
 					echo <<<HTML
-						<tr data-row-id="{$row['codigo_diretor']}">
-							<td>{$row['codigo_diretor']}</td>
-							<td>{$row['nome_diretor']}</td>
-							<td>
-								<button type="button" onclick="toggleEditForm({$row['codigo_diretor']})">Editar</button>
-							</td>
-						</tr>
 						<script>
-							db.cod.push('$r1');
-							db.nome.push('$r2');
+							const db = {cod:[], nome:[]};
 						</script>
 					HTML;
+
+					# This returns the directors data on the top of the page
+					while ($row = $result->fetch_assoc()) {
+						$r1 = $row["codigo_diretor"];
+						$r2 = $row["nome_diretor"];
+
+						$db[] = [
+							"cod" => $r1,
+							"nome" => $r2
+						];
+
+						echo <<<HTML
+							<tr data-row-id="{$row['codigo_diretor']}">
+								<td>{$row['codigo_diretor']}</td>
+								<td>{$row['nome_diretor']}</td>
+								<td>
+									<button type="button" onclick="toggleEditForm({$row['codigo_diretor']})">Editar</button>
+								</td>
+							</tr>
+							<script>
+								db.cod.push('$r1');
+								db.nome.push('$r2');
+							</script>
+						HTML;
+					}
+
+					echo <<<HTML
+						<!-- This row is for the Inserir Diretores button, which reveals the insertion form -->
+						<tr id="insFormButt">
+							<td colspan="5">
+								<button type="button" onclick="toggleInsForm()">Inserir Diretores</button>
+							</td>
+						</tr>
+
+						<!-- This row is for the Deletar Diretores button, which reveals the checkboxes and actual delete button -->
+						<tr id="checkboxButt">
+							<td colspan="5">
+								<button type="button" onclick="addCheckboxAndButt()">Deletar Diretores</button>
+							</td>
+						</tr>
+
+						<!-- This row is for the Deletar Diretores Selecionados button, which is the de facto delete button, which starts off hidden -->
+						<tr>
+							<td id="delButt" colspan="5">
+								<button id="actualDelButt" type="submit" hidden>Deletar Diretores Selecionados</button>
+							</td>
+						</tr>
+					HTML;
+
 				}
-
-				echo <<<HTML
-					<!-- This row is for the Inserir Diretores button, which reveals the insertion form -->
-					<tr id="insFormButt">
-						<td colspan="5">
-							<button type="button" onclick="toggleInsForm()">Inserir Diretores</button>
-						</td>
-					</tr>
-
-					<!-- This row is for the Deletar Diretores button, which reveals the checkboxes and actual delete button -->
-					<tr id="checkboxButt">
-						<td colspan="5">
-							<button type="button" onclick="addCheckboxAndButt()">Deletar Diretores</button>
-						</td>
-					</tr>
-
-					<!-- This row is for the Deletar Diretores Selecionados button, which is the de facto delete button, which starts off hidden -->
-					<tr>
-						<td id="delButt" colspan="5">
-							<button id="actualDelButt" type="submit" hidden>Deletar Diretores Selecionados</button>
-						</td>
-					</tr>
-				HTML;
-
-			} else {
-				echo "Nenhum dado encontrado.";  # TODO: Add meme here too
-			}
-		?>
+				else {
+					echo "Nenhum dado encontrado.";  # TODO: Add meme here too
+				}
+			?>
 		
 		</table>
 	</form>
 
+	<!-- TODO: Verify if each input is valid before submitting -->
 	<form id="insForm" action="insDir.php" method="POST">
 		<table>
 			<tr>
@@ -123,7 +125,6 @@
 		for ($i = 0; $i < count($db); $i++) {
 			$cod = $db[$i]["cod"];
 			$name = $db[$i]["nome"];
-
 
 			$id = "editForm" . ($cod);
 			# echo $id;

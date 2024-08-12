@@ -18,30 +18,39 @@
 		exit();
 	}
 
-	require_once 'classDiretor.php';
+	require_once 'classFilme.php';
 
-
-	$form_codigo_original = $_POST['cod'];
+	$form_codigo_original = $_POST['codigo'];
 	$form_codigo = $_POST['cod'];
 	$form_nome = $_POST['nome'];
+	$form_ano = $_POST['ano'];
+	$form_cat = $_POST['cat'];
+	$form_dir = $_POST['dir'];
 
-	$sql = "UPDATE tbdiretor SET codigo_diretor = $form_codigo, nome_diretor = '$form_nome' WHERE codigo_diretor = $form_codigo_original;";  //Scheiß auf diese Zeile!
-	$msg = $connecticut->query($sql) ? "Dados inserido(a) com sucesso" : 'erro';
+	$sql = "UPDATE tbfilme SET codigo_filme = $form_codigo, nome_filme = '$form_nome', ano_filme = $form_ano, categoria_filme = '$form_cat', codigo_diretor = $form_dir WHERE codigo_filme = 6;";
+	# echo $sql;
+	$msg = $connecticut->query($sql) ? "Dados alterados com sucesso" : 'erro';
 
 	# TODO: Print a 2x2 table here to display the inserted data, da blin;
 ?>
 
 <table>
 	<tr>
-		<td colspan=2><?php echo $msg ?></td>
+		<td colspan=5><?php echo $msg ?></td>
 	</tr>
 	<tr>
 		<td>Código</td>
 		<td>Nome</td>
+		<td>Ano</td>
+		<td>Categoria</td>
+		<td>Diretor</td>
 	</tr>
 	<tr>
 		<td><?php echo "$form_codigo" ?></td>
 		<td><?php echo "$form_nome" ?></td>
+		<td><?php echo "$form_ano" ?></td>
+		<td><?php echo "$form_cat" ?></td>
+		<td><?php echo "$form_dir" ?></td>
 	</tr>
 </table>
 
