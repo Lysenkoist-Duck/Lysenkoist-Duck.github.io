@@ -22,24 +22,11 @@ if ($connecticut->connect_errno){
 require_once 'classDiretor.php';
 
 
-/*Realizar a inserção de dados no banco de dados de 3 jeitos:
-	1º -> Sem criar objeto;       ✔️
-	2º -> Criando objeto PHP;     ✔️
-	3º -> Criando objeto Python.  ❌
-
-	▄︻デ══━一
-
-*/
-
+$form_codigo_original = $_POST['cod'];
 $form_codigo = $_POST['cod'];
 $form_nome = $_POST['nome'];
 
-$objeto_diretor = new Diretor($form_codigo, $form_nome);
-
-$obj_codigo = $objeto_diretor->getCodigoDiretor();
-$obj_nome = $objeto_diretor->getNome();
-
-$sql = "INSERT INTO tbdiretor (codigo_diretor, nome_diretor) VALUES ($obj_codigo, '$obj_nome')";
+$sql = "UPDATE tbdiretor SET codigo_diretor = $form_codigo, nome_diretor = '$form_nome' WHERE codigo_diretor = $form_codigo_original;";  //Scheiß auf diese Zeile!
 $msg = $connecticut->query($sql) ? "Dados inserido(a) com sucesso" : 'erro';
 
 # TODO: Print a 2x2 table here to display the inserted data, da blin;
@@ -54,8 +41,8 @@ $msg = $connecticut->query($sql) ? "Dados inserido(a) com sucesso" : 'erro';
 		<td>Nome</td>
 	</tr>
 	<tr>
-		<td><?php echo "$obj_codigo" ?></td>
-		<td><?php echo "$obj_nome" ?></td>
+		<td><?php echo "$form_codigo" ?></td>
+		<td><?php echo "$form_nome" ?></td>
 	</tr>
 </table>
 
