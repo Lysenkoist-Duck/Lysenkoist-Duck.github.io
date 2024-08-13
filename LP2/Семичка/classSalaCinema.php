@@ -33,3 +33,5 @@ class SalaDeCinema
         return $this->capacidade;
     }
 }
+
+?>
