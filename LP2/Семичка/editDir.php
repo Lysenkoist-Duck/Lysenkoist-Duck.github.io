@@ -28,7 +28,7 @@
 	$sql = "UPDATE tbdiretor SET codigo_diretor = $form_codigo, nome_diretor = '$form_nome' WHERE codigo_diretor = $form_codigo_original;";  //Scheiß auf diese Zeile!
 	$msg = $connecticut->query($sql) ? "Dados inserido(a) com sucesso" : 'erro';
 
-	# TODO: Print a 2x2 table here to display the inserted data, da blin;
+	# TODO: Print a 2x2 table here to display the inserted data, да блин!;
 ?>
 
 <table>
