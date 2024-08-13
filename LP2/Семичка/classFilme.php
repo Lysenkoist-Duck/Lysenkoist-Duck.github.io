@@ -76,3 +76,5 @@ $filme->setCategoria("Comédia");
 echo "<br>Informações atualizadas do filme:<br>";
 echo "Ano: " . $filme->getAno() . "<br>";
 echo "Categoria: " . $filme->getCategoria() . "<br>";
+
+?>
