@@ -24,7 +24,7 @@ require_once 'classFilme.php';
 
 /*Realizar a inserção de dados no banco de dados de 3 jeitos:
 	1º -> Sem criar objeto;       ✔️
-	2º -> Criando objeto PHP;     ✔️
+	2º -> Criando objeto PHP;     ❌
 	3º -> Criando objeto Python.  ❌
 
 	▄︻デ══━一

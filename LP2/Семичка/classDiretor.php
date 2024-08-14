@@ -28,5 +28,3 @@ class Diretor
     # TODO: Add code to make a method for saving it in the db
 
 }
-
-?>
