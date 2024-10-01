@@ -1,0 +1,92 @@
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	background-color: #F0F8FF; /* Cor de fundo clara e suave */
+	color: #2C3E50; /* Cor do texto */
+	padding: 20px;
+}
+
+h1, h2 {
+	color: #1A5276; /* Cor dos títulos */
+}
+
+h3 {
+	color: #2874A6;
+}
+
+ul {
+	margin-left: 20px;
+}
+
+.category {
+	background-color: #E3F2FD; /* Fundo suave para categorias */
+	padding: 15px;
+	border-radius: 8px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+p {
+	margin-bottom: 10px;
+}
+
+strong {
+	color: #145A32; /* Destaque para termos importantes */
+}
+
+.image-container {
+	text-align: center; /* Centraliza a imagem */
+	margin-bottom: 20px;
+}
+
+img {
+	max-width: 100%; /* Garante que a imagem se ajuste ao tamanho da página */
+	height: auto; /* Mantém a proporção da imagem */
+	border-radius: 8px; /* Bordas arredondadas */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+	display: block; /* Garante que a imagem seja tratada como um bloco */
+	margin: 0 auto; /* Centraliza a imagem horizontalmente */
+}
+
+.eia-standards {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.eia {
+	background-color: #F4F6F7; /* Fundo suave */
+	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.eia h3 {
+	margin-bottom: 10px;
+	color: #2C3E50;
+}
+
+.eia-colors {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.eia-colors span {
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+	min-width: 100px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.white-green { background-color: #A9DFBF; color: #000; }
+.green { background-color: #2ECC71; }
+.white-orange { background-color: #FFC979; color: #000; } /* Laranja claro */
+.orange { background-color: #E67E22; }
+.blue { background-color: #5DADE2; }
+.white-blue { background-color: #AED6F1; color: #000; }
+.white-brown { background-color: #E5B299; color: #000; } /* Cor marrom claro */
+.brown { background-color: #8B4513; } /* Cor marrom */
