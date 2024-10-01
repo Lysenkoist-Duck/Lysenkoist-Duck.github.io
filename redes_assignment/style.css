@@ -14,8 +14,15 @@ h3 {
 	color: #2874A6;
 }
 
-ul {
-	margin-left: 20px;
+ul ol {
+	margin-left: 25px;
+	margin-top: 10px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+    font-size: 16px;
 }
 
 .category {
@@ -46,6 +53,12 @@ img {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
 	display: block; /* Garante que a imagem seja tratada como um bloco */
 	margin: 0 auto; /* Centraliza a imagem horizontalmente */
+}
+
+.image-caption {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
 }
 
 .eia-standards {
